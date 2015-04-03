@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 
 
-setup(name='django',
+setup(name='djangoblog',
       version='0.1',
       description='Django Blog',
       author='Josh Addington',
