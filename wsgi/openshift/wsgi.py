@@ -18,11 +18,12 @@ if 'OPENSHIFT_REPO_DIR' in os.environ:
     os.environ['PYTHON_EGG_CACHE'] = os.path.join(virtenv, 'lib/python3.3/site-packages')
     virtualenv = os.path.join(virtenv, 'bin/activate')
     try:
-        with open(virtualenv, 'rb') as exec_file:
-            file_contents = exec_file.read()
-        compiled_code = compile(file_contents, virtualenv, 'exec')
-        exec_namespace = dict(__file__=virtualenv)
-        exec(compiled_code, exec_namespace)
+        exec(compile(open(virtualenv).read(), virtualenv, 'exec'), dict(__file__ = virtualenv))
+        # with open(virtualenv, 'rb') as exec_file:
+        #     file_contents = exec_file.read()
+        # compiled_code = compile(file_contents, virtualenv, 'exec')
+        # exec_namespace = dict(__file__=virtualenv)
+        # exec(compiled_code, exec_namespace)
     except IOError:
         pass
 
