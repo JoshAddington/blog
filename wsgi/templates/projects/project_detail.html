@@ -23,15 +23,15 @@
                         {% if posts_length == 1 %}
                                 <h4>This project is described in the blog post
                                 {%  for post in project.post_set.all %}
-                                       <a href="{%url 'blogging.views.post_detail' pk=post.pk %}">{{post}}</a>.
+                                       <a href="{%url 'blog.views.post_detail' pk=post.pk %}">{{post}}</a>.
                                 {% endfor %} </h4>
                         {% elif posts_length > 1 %}
                                 <h4>This project is described in the blog posts
                                 {%  for post in project.post_set.all %}
                                         {% if forloop.last %}
-                                                and <a href="{%url 'blogging.views.post_detail' pk=post.pk %}">{{post}}</a>.
+                                                and <a href="{%url 'blog.views.post_detail' pk=post.pk %}">{{post}}</a>.
                                         {% else %}
-                                                <a href="{%url 'blogging.views.post_detail' pk=post.pk %}">{{post}}</a>,
+                                                <a href="{%url 'blog.views.post_detail' pk=post.pk %}">{{post}}</a>,
                                         {% endif %}
                                 {% endfor %} </h4>
                         {% endif %}

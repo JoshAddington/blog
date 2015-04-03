@@ -8,7 +8,7 @@
                                                 {{post.published_date}}
                                                 <br>
                                 {% else %}
-                                        <a href="{% url 'blogging.views.post_publish' pk=post.pk %}"><input type="submit" value="Publish" class="mybutton spaced"></a><br>
+                                        <a href="{% url 'blog.views.post_publish' pk=post.pk %}"><input type="submit" value="Publish" class="mybutton spaced"></a><br>
                                 {% endif%}
 
                                 {% if user.is_authenticated %}

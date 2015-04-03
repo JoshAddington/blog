@@ -14,6 +14,8 @@ class PostAdmin(admin.ModelAdmin):
 
         list_display = ('title', 'created_date', 'published_date')
 
+        prepopulated_fields = {'slug': ('title',)}
+
 
 class CommentAdmin(admin.ModelAdmin):
         fieldsets = [
