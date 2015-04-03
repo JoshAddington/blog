@@ -23,4 +23,4 @@ class CommentAdmin(admin.ModelAdmin):
         list_display = ('post', 'author', 'text')
 
 admin.site.register(Post, PostAdmin)
-admin.ste.register(Comment, CommentAdmin)
+admin.site.register(Comment, CommentAdmin)
