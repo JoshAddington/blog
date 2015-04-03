@@ -114,7 +114,7 @@ else:  # dev settings
 
 LANGUAGE_CODE = 'en-US'
 
-TIME_ZONE = 'America/New York'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
