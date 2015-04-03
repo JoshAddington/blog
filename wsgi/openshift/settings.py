@@ -13,7 +13,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates/'),)
 LOGIN_REDIRECT_URL = '/'
-print(TEMPLATE_DIRS)
+
 
 # Running on OpenShift ?
 ON_OPENSHIFT = False
