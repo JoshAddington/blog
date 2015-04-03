@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        {% for project in projects %}
+        <div class="post">
+                <p class="date">Created: {{ project.created_date|date:"M-d-Y" }}</p>
+                <h2><a href="{% url 'projects.views.project_detail' pk=project.pk %}">{{project.title}}</a></h2>
+                <p>{{ project.content|truncatechars:200 }}</p>
+        </div>
+        {% endfor  %}
+{% endblock %}

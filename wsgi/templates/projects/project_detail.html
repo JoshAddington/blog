@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block project %}
+        <div class="project">
+                <div class="date">
+                {% if project.published_date %}
+                        {{project.published_date}}
+                        <br>
+                {% endif%}
+
+                {% if user.is_authenticated %}
+                        {% if not project.published_date %}
+                            <a href="{% url 'projects.views.project_publish' pk=project.pk %}"><input type="submit" value="Publish" class="mybutton spaced"></a><br>
+                        {% endif %}
+                        <a  href="{% url 'projects.views.project_edit' pk=project.pk %}" class="mybutton small"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a href="{% url 'projects.views.project_delete' pk=project.pk %}" class="mybutton small"><span class="glyphicon glyphicon-remove"></span></a>
+                {% endif %}
+                </div>
+
+                <h2>{{ project.title }}</h2>
+                <div class="project-post">
+                        <div class="post-relation">
+                        {% if posts_length == 1 %}
+                                <h4>This project is described in the blog post
+                                {%  for post in project.post_set.all %}
+                                       <a href="{%url 'blogging.views.post_detail' pk=post.pk %}">{{post}}</a>.
+                                {% endfor %} </h4>
+                        {% elif posts_length > 1 %}
+                                <h4>This project is described in the blog posts
+                                {%  for post in project.post_set.all %}
+                                        {% if forloop.last %}
+                                                and <a href="{%url 'blogging.views.post_detail' pk=post.pk %}">{{post}}</a>.
+                                        {% else %}
+                                                <a href="{%url 'blogging.views.post_detail' pk=post.pk %}">{{post}}</a>,
+                                        {% endif %}
+                                {% endfor %} </h4>
+                        {% endif %}
+                        </div>
+                        {{ project.content|linebreaks }}
+                </div>
+                <div class="project-code">
+                        {{ project.code|safe }}
+                </div>
+        </div>
+{% endblock project %}
+
+{% block extra_js %}
+{{project.js|safe}}
+{% endblock extra_js %}

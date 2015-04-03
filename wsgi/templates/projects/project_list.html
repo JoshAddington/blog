@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block project %}
+
+        {% if user.is_authenticated %}
+        <div class="buttons">
+                <a href="{% url 'projects.views.project_new' %}"><input type="submit" value="New Project" class="mybutton spaced project"></a>
+               <br><br><br>
+
+                <a href="{% url 'projects.views.project_draft_list' %}"><input type="submit" value="Project Drafts" class="mybutton spaced project"></a>
+        </div>
+        {% endif %}
+
+        {% for project in projects %}
+
+        <div class='project'>
+                <div class="date">
+                        {{ project.published_date }}
+                </div>
+                <a href="{% url 'projects.views.project_detail' pk=project.pk  %}"><h2>{{ project.title }}</h2>
+                <p>
+                        {{ project.content|linebreaks }}
+                </p>
+                <img src=" {{ project.preview }}">
+                </a>
+        </div>
+
+        {% endfor %}
+{% endblock project %}
