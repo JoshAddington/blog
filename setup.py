@@ -3,7 +3,7 @@ import os
 
 
 setup(name='djangoblog',
-      version='0.1',
+      version='0.2',
       description='Django Blog',
       author='Josh Addington',
       author_email='addington.code@gmail.com',

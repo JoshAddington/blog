@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates/'))
+TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates/'),)
 LOGIN_REDIRECT_URL = '/'
 print(TEMPLATE_DIRS)
 
@@ -38,7 +38,7 @@ if os.environ['OPENSHIFT_GEAR_DNS'] == 'mysite-addington.rhcloud.com':
 else:
     DEBUG = True
 
-TEMPLATE_DEBUG = DEBUG
+TEMPLATE_DEBUG = True
 
 # Enable debug for only selected hosts
 if DEBUG:
