@@ -33,10 +33,10 @@ else:
     SECRET_KEY = os.environ['BLOG_SECRET_KEY'] # dev key
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ['OPENSHIFT_GEAR_DNS'] == 'mysite-addington.rhcloud.com':
-    DEBUG = False
-else:
-    DEBUG = True
+# if os.environ['OPENSHIFT_GEAR_DNS'] == 'mysite-addington.rhcloud.com':
+#     DEBUG = False
+#else:
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
