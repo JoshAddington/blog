@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 import openshift.wsgi
+from whitenoise.django import DjangoWhiteNoise
 
 # reuse the application callable from openshift.wsgi
 application = openshift.wsgi.application
+application = DjangoWhiteNoise(application)
