@@ -16,7 +16,7 @@ if 'OPENSHIFT_REPO_DIR' in os.environ:
     sys.path.append(os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi', 'openshift'))
     virtenv = os.environ['OPENSHIFT_PYTHON_DIR'] + '/virtenv/'
     os.environ['PYTHON_EGG_CACHE'] = os.path.join(virtenv, 'lib/python3.3/site-packages')
-    virtualenv = os.path.join(virtenv, 'bin/activate_this.py')
+    virtualenv = os.path.join(virtenv, 'bin/activate')
     try:
         with open(virtualenv, 'rb') as exec_file:
             file_contents = exec_file.read()

@@ -76,23 +76,27 @@ WSGI_APPLICATION = 'openshift.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-if ON_OPENSHIFT: # production settings
+if ON_OPENSHIFT:  # production settings
     DATABASES = {
-         'default': { # you can change the backend to any django supported
-            'ENGINE':   'django.db.backends.mysql',
+        'default': {  # you can change the backend to any django supported
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME':     os.environ['OPENSHIFT_APP_NAME'],
             'USER':     os.environ['OPENSHIFT_MYSQL_DB_USERNAME'],
             'PASSWORD': os.environ['OPENSHIFT_MYSQL_DB_PASSWORD'],
             'HOST':     os.environ['OPENSHIFT_MYSQL_DB_HOST'],
             'PORT':     os.environ['OPENSHIFT_MYSQL_DB_PORT'],
-         }
+        }
     }
-else: # dev settings
-     DATABASES = {
-         'default': {
-             'ENGINE': 'django.db.backends.sqlite3',
-             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-         }
+else:  # dev settings
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'blogdb',
+            'USER': os.environ['BLOG_DB_USER'],
+            'PASSWORD': os.environ['BLOG_DB_PASSWORD'],
+            'HOST': '',
+            'PORT': '',
+        }
     }
 
 
