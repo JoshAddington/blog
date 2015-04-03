@@ -33,8 +33,7 @@ else:
     SECRET_KEY = os.environ['BLOG_SECRET_KEY'] # dev key
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ['OPENSHIFT_GEAR_DNS'] == 'mysite-addington.rhcloud.com
-':
+if os.environ['OPENSHIFT_GEAR_DNS'] == 'mysite-addington.rhcloud.com':
     DEBUG = False
 else:
     DEBUG = True
@@ -49,7 +48,7 @@ else:
 
 # List of admins (+ 500 error report by mail)
 ADMINS = (
-    ('Name', 'mail@example.com'),
+    ('Josh', 'dragonorta@gmail.com'),
 )
 
 # Application definition
@@ -113,9 +112,9 @@ else:  # dev settings
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'fr_FR'
+LANGUAGE_CODE = 'en-US'
 
-TIME_ZONE = 'Europe/Paris'
+TIME_ZONE = 'America/New York'
 
 USE_I18N = True
 
