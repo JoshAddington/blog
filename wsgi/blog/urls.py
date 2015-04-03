@@ -1,4 +1,4 @@
-from . import views
+from blog import views
 from django.conf.urls import patterns, url
 
 urlpatterns = patterns('',
