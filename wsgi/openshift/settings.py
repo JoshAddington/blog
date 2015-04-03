@@ -11,11 +11,12 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
 
 # Running on OpenShift ?
 ON_OPENSHIFT = False
 if 'OPENSHIFT_REPO_DIR' in os.environ:
-     ON_OPENSHIFT = True
+    ON_OPENSHIFT = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -31,17 +32,17 @@ else:
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if ON_OPENSHIFT:
-     DEBUG = False
+    DEBUG = False
 else:
-     DEBUG = True
+    DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
 # Enable debug for only selected hosts
 if DEBUG:
-     ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = []
 else:
-     ALLOWED_HOSTS = ['*']
+    ALLOWED_HOSTS = ['*']
 
 # List of admins (+ 500 error report by mail)
 ADMINS = (
@@ -57,6 +58,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+)
+
+INSTALLED_APPS += (
+    'blog',
+    'projects',
+    'citibike',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -111,7 +118,9 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
+
+TIME_ZONE = 'America/New_York'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
