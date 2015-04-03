@@ -5,6 +5,7 @@ from django.utils import timezone
 class Project(models.Model):
         author = models.ForeignKey('auth.User')
         title = models.CharField(max_length=50)
+        slug = models.SlugField()
         preview = models.CharField(max_length=250, blank=True)
         content = models.TextField()
         code = models.TextField(blank=True)
