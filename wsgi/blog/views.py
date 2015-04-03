@@ -37,7 +37,7 @@ def post_new(request):
                         post.save()
                         # This saves the project relation
                         form.save_m2m()
-                        return redirect('blog.views.psot_detail', pk=post.pk)
+                        return redirect('blog.views.post_detail', pk=post.pk)
         else:
                 form = PostForm()
         return render(request, 'blog/post_edit.html', {'form': form})
@@ -54,7 +54,7 @@ def post_edit(request, pk):
                         post.save()
                         # This saves project relation
                         form.save_m2m()
-                return redirect('blogging.views.post_detail', pk=post.pk)
+                return redirect('blog.views.post_detail', pk=post.pk)
         else:
                 action = "Edit"
                 form = PostForm(instance=post)
@@ -71,11 +71,11 @@ def post_draft_list(request):
 def post_publish(request, pk):
         post = get_object_or_404(Post, pk=pk)
         post.publish()
-        return redirect('blogging.views.post_detail', pk=pk)
+        return redirect('blog.views.post_detail', pk=pk)
 
 
 @login_required
 def post_delete(request, pk):
         post = get_object_or_404(Post, pk=pk)
         post.delete()
-        return redirect('blogging.views.post_list')
+        return redirect('blog.views.post_list')

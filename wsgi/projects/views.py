@@ -70,6 +70,6 @@ def project_delete(request, pk):
 def get_boroughs():
     r = requests.get(
         "http://bl.ocks.org/phil-pedruco/raw/6646844/830fab4f3a9cb28766c292c10fd99837bfcd1b80/nyc.json"
-        )
+    )
     data = json.loads(r.text)
     return data
