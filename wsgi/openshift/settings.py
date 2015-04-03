@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
-TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
+TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates/'),)
+LOGIN_REDIRECT_URL = '/'
 print(TEMPLATE_DIRS)
 
 # Running on OpenShift ?
@@ -30,10 +30,11 @@ if ON_OPENSHIFT:
     except KeyError:
         print("Please create env variable DJANGO_SETTINGS_SECRET_KEY (cf README)")
 else:
-    SECRET_KEY = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz' # dev key
+    SECRET_KEY = os.environ['BLOG_SECRET_KEY'] # dev key
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if ON_OPENSHIFT:
+if os.environ['OPENSHIFT_GEAR_DNS'] == 'mysite-addington.rhcloud.com
+':
     DEBUG = False
 else:
     DEBUG = True
