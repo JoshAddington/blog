@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates/'),)
+TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates/'))
 LOGIN_REDIRECT_URL = '/'
 print(TEMPLATE_DIRS)
 
@@ -122,7 +122,6 @@ USE_L10N = True
 
 USE_TZ = False
 
-TIME_ZONE = 'America/New_York'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
