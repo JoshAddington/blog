@@ -100,7 +100,7 @@ else:  # dev settings
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'blogdb',
+            'NAME': 'citidb',
             'USER': os.environ['BLOG_DB_USER'],
             'PASSWORD': os.environ['BLOG_DB_PASSWORD'],
             'HOST': '',

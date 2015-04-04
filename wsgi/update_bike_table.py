@@ -28,21 +28,21 @@ def add_stations(json_file):
                     name=row['stationName'],
                     availableDocks=(row['availableDocks'] + row['availableBikes']),
                     latitude=row['latitude'],
-                    longitude=row['longitude'])[0]
+                    longitude=row['longitude'])
 
 
 def add_bikes(json_file):
         update = UpdateTime.objects.get_or_create(
             time=time,
-            date=date)[0]
+            date=date)
+        print(update[0])
         for row in json_file:
                 station_id = Station.objects.get(id=row['id'])
                 bike = Bike.objects.get_or_create(
                     station=station_id,
-                    update=update['id'],
-                    number_of_bikes=row['availableBikes'])[0]
+                    update=update[0],
+                    number_of_bikes=int(row['availableBikes']))
 
 
 if __name__ == '__main__':
-        add_stations(station_info)
         add_bikes(station_info)
