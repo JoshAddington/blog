@@ -11,7 +11,7 @@ setup(name='djangoblog',
       install_requires=[
            'Django>=1.7',
            'djangorestframework',
-           'grappelli',
+           'django-grappelli',
            'psycopg2',
            'requests',
            'whitenoise'],
