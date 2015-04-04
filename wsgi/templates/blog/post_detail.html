@@ -8,13 +8,13 @@
                                                 {{post.published_date}}
                                                 <br>
                                 {% else %}
-                                        <a href="{% url 'blog.views.post_publish' pk=post.pk %}"><input type="submit" value="Publish" class="mybutton spaced"></a><br>
+                                        <a href="{% url 'blog.views.post_publish' slug=post.slug %}"><input type="submit" value="Publish" class="mybutton spaced"></a><br>
                                 {% endif%}
 
                                 {% if user.is_authenticated %}
-                                <a  href="{% url 'post_edit' pk=post.pk %}"class="mybutton small"><span class="glyphicon glyphicon-edit"></span>
+                                <a  href="{% url 'post_edit' slug=post.slug %}"class="mybutton small"><span class="glyphicon glyphicon-edit"></span>
                                 </a>
-                                <a href="{% url 'post_delete' pk=post.pk %}" class="mybutton small"><span class="glyphicon glyphicon-remove"></span></a>
+                                <a href="{% url 'post_delete' slug=post.slug %}" class="mybutton small"><span class="glyphicon glyphicon-remove"></span></a>
                                 {% endif %}
                         </div>
 
@@ -26,15 +26,15 @@
                             {% if projects_length == 1 %}
                                     <h4>This post describes the project
                                     {%  for project in post.project.all %}
-                                           <a href="{%url 'projects.views.project_detail' pk=project.pk %}">{{project}}</a>.
+                                           <a href="{%url 'projects.views.project_detail' slug=project.slug %}">{{project}}</a>.
                                     {% endfor %} </h4>
                             {% elif projects_length > 1 %}
                                 <h4>This post describes the projects
                                 {%  for project in post.project.all %}
                                         {% if forloop.last %}
-                                                and <a href="{%url 'projects.views.project_detail' pk=project.pk %}">{{project}}</a>.
+                                                and <a href="{%url 'projects.views.project_detail' slug=project.slug %}">{{project}}</a>.
                                         {% else %}
-                                                <a href="{%url 'projects.views.project_detail' pk=project.pk %}">{{project}}</a>,
+                                                <a href="{%url 'projects.views.project_detail' slug=project.slug %}">{{project}}</a>,
                                         {% endif %}
                                 {% endfor %} </h4>
                             {% endif %}

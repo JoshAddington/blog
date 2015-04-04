@@ -15,8 +15,8 @@ def post_list(request):
         return render(request, 'blog/post_list.html', {'posts': posts})
 
 
-def post_detail(request, pk):
-        post = get_object_or_404(Post, pk=pk)
+def post_detail(request, slug):
+        post = get_object_or_404(Post, slug=slug)
         projects_length = len(post.project.all())
         form = CommentForm(request.POST or None)
         if form.is_valid():
@@ -37,15 +37,15 @@ def post_new(request):
                         post.save()
                         # This saves the project relation
                         form.save_m2m()
-                        return redirect('blog.views.post_detail', pk=post.pk)
+                        return redirect('blog.views.post_detail', slug=post.slug)
         else:
                 form = PostForm()
         return render(request, 'blog/post_edit.html', {'form': form})
 
 
 @login_required
-def post_edit(request, pk):
-        post = get_object_or_404(Post, pk=pk)
+def post_edit(request, slug):
+        post = get_object_or_404(Post, slug=slug)
         if request.method == "POST":
                 form = PostForm(request.POST, instance=post)
                 if form.is_valid():
@@ -54,7 +54,7 @@ def post_edit(request, pk):
                         post.save()
                         # This saves project relation
                         form.save_m2m()
-                return redirect('blog.views.post_detail', pk=post.pk)
+                return redirect('blog.views.post_detail', slug=post.slug)
         else:
                 action = "Edit"
                 form = PostForm(instance=post)
@@ -68,14 +68,14 @@ def post_draft_list(request):
 
 
 @login_required
-def post_publish(request, pk):
-        post = get_object_or_404(Post, pk=pk)
+def post_publish(request, slug):
+        post = get_object_or_404(Post, slug=slug)
         post.publish()
-        return redirect('blog.views.post_detail', pk=pk)
+        return redirect('blog.views.post_detail', slug=slug)
 
 
 @login_required
-def post_delete(request, pk):
-        post = get_object_or_404(Post, pk=pk)
+def post_delete(request, slug):
+        post = get_object_or_404(Post, slug=slug)
         post.delete()
         return redirect('blog.views.post_list')

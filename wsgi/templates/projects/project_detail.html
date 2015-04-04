@@ -10,10 +10,10 @@
 
                 {% if user.is_authenticated %}
                         {% if not project.published_date %}
-                            <a href="{% url 'projects.views.project_publish' pk=project.pk %}"><input type="submit" value="Publish" class="mybutton spaced"></a><br>
+                            <a href="{% url 'projects.views.project_publish' slug=project.slug %}"><input type="submit" value="Publish" class="mybutton spaced"></a><br>
                         {% endif %}
-                        <a  href="{% url 'projects.views.project_edit' pk=project.pk %}" class="mybutton small"><span class="glyphicon glyphicon-edit"></span></a>
-                        <a href="{% url 'projects.views.project_delete' pk=project.pk %}" class="mybutton small"><span class="glyphicon glyphicon-remove"></span></a>
+                        <a  href="{% url 'projects.views.project_edit' slug=project.slug %}" class="mybutton small"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a href="{% url 'projects.views.project_delete' slug=project.slug %}" class="mybutton small"><span class="glyphicon glyphicon-remove"></span></a>
                 {% endif %}
                 </div>
 
@@ -23,15 +23,15 @@
                         {% if posts_length == 1 %}
                                 <h4>This project is described in the blog post
                                 {%  for post in project.post_set.all %}
-                                       <a href="{%url 'blog.views.post_detail' pk=post.pk %}">{{post}}</a>.
+                                       <a href="{%url 'blog.views.post_detail' slug=post.slug %}">{{post}}</a>.
                                 {% endfor %} </h4>
                         {% elif posts_length > 1 %}
                                 <h4>This project is described in the blog posts
                                 {%  for post in project.post_set.all %}
                                         {% if forloop.last %}
-                                                and <a href="{%url 'blog.views.post_detail' pk=post.pk %}">{{post}}</a>.
+                                                and <a href="{%url 'blog.views.post_detail' slug=post.slug %}">{{post}}</a>.
                                         {% else %}
-                                                <a href="{%url 'blog.views.post_detail' pk=post.pk %}">{{post}}</a>,
+                                                <a href="{%url 'blog.views.post_detail' slug=post.slug %}">{{post}}</a>,
                                         {% endif %}
                                 {% endfor %} </h4>
                         {% endif %}
