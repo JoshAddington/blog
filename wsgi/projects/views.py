@@ -12,8 +12,8 @@ def project_list(request):
     return render(request, 'projects/project_list.html', {'projects': projects})
 
 
-def project_detail(request, pk):
-    project = get_object_or_404(Project, pk=pk)
+def project_detail(request, slug):
+    project = get_object_or_404(Project, slug=slug)
     posts_length = len(project.post_set.all())
     return render(request, 'projects/project_detail.html', {'project': project, 'posts_length': posts_length})
 
@@ -26,22 +26,22 @@ def project_new(request):
             project = form.save(commit=False)
             project.author = request.user
             project.save()
-            return redirect('projects.views.project_detail', pk=project.pk)
+            return redirect('projects.views.project_detail', slug=project.slug)
     else:
         form = ProjectForm()
     return render(request, 'projects/project_edit.html', {'form': form})
 
 
 @login_required
-def project_edit(request, pk):
-    project = get_object_or_404(Project, pk=pk)
+def project_edit(request, slug):
+    project = get_object_or_404(Project, slug=slug)
     if request.method == "POST":
         form = ProjectForm(request.POST, instance=project)
         if form.is_valid():
             project = form.save(commit=False)
             project.author = request.user
             project.save()
-            return redirect('projects.views.project_detail', pk=project.pk)
+            return redirect('projects.views.project_detail', slug=project.slug)
     else:
         form = ProjectForm(instance=project)
     return render(request, 'projects/project_edit.html', {'form': form})
@@ -54,15 +54,15 @@ def project_draft_list(request):
 
 
 @login_required
-def project_publish(request, pk):
-    project = get_object_or_404(Project, pk=pk)
+def project_publish(request, slug):
+    project = get_object_or_404(Project, slug=slug)
     project.publish()
-    return redirect('projects.views.project_detail', pk=pk)
+    return redirect('projects.views.project_detail', slug=slug)
 
 
 @login_required
-def project_delete(request, pk):
-    project = get_object_or_404(Project, pk=pk)
+def project_delete(request, slug):
+    project = get_object_or_404(Project, slug=slug)
     project.delete()
     return redirect('projects.views.project_list')
 

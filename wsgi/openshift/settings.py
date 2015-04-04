@@ -54,6 +54,7 @@ ADMINS = (
 # Application definition
 
 INSTALLED_APPS = (
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -65,7 +66,7 @@ INSTALLED_APPS = (
 INSTALLED_APPS += (
     'blog',
     'projects',
-    'citibike',
+    'citibike'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -122,6 +123,11 @@ USE_L10N = True
 
 USE_TZ = False
 
+
+# Grappelli template settings
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.request",
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/

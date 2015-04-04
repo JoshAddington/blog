@@ -35,7 +35,6 @@ def add_bikes(json_file):
         update = UpdateTime.objects.get_or_create(
             time=time,
             date=date)
-        print(update[0])
         for row in json_file:
                 station_id = Station.objects.get(id=row['id'])
                 bike = Bike.objects.get_or_create(
