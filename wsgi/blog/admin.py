@@ -8,7 +8,7 @@ class CommentInline(admin.TabularInline):
 
 class PostAdmin(admin.ModelAdmin):
         fieldsets = [
-            (None, {'fields': ['author', 'title', 'project', 'text']}),
+            (None, {'fields': ['author', 'title', 'slug', 'project', 'text']}),
             ('Date Information', {'fields': ['created_date', 'published_date']}),
         ]
 
