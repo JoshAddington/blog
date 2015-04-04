@@ -126,7 +126,8 @@ USE_TZ = False
 
 # Grappelli template settings
 TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.core.context_processors.request",
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.request',
 )
 
 # Static files (CSS, JavaScript, Images)
