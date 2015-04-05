@@ -33,10 +33,10 @@ else:
     SECRET_KEY = os.environ['BLOG_SECRET_KEY'] # dev key
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# if os.environ['OPENSHIFT_GEAR_DNS'] == 'mysite-addington.rhcloud.com':
-#     DEBUG = False
-#else:
-DEBUG = True
+if ON_OPENSHIFT and os.environ['OPENSHIFT_GEAR_DNS'] == 'mysite-addington.rhcloud.com':
+    DEBUG = False
+else:
+    DEBUG = True
 
 TEMPLATE_DEBUG = True
 
@@ -133,9 +133,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'staticfiles'),
+)
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
