@@ -9,7 +9,7 @@
                 </div>
                 <h2><a href="{% url 'blog.views.post_detail' slug=post.slug  %}">{{ post.title }}</a></h2>
                 <p>
-                        {{ post.text|linebreaks }}
+                        {{ post.text|truncatechars:600|linebreaks }}
                 </p>
         </div>
 
