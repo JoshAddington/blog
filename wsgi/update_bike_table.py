@@ -21,27 +21,38 @@ date = execution_time[0:10]
 time = execution_time[11:]
 
 
-def add_stations(json_file):
-        for row in json_file:
-                s = Station.objects.get_or_create(
-                    id=row['id'],
-                    name=row['stationName'],
-                    availableDocks=(row['availableDocks'] + row['availableBikes']),
-                    latitude=row['latitude'],
-                    longitude=row['longitude'])
-
-
-def add_bikes(json_file):
-        update = UpdateTime.objects.get_or_create(
+def update_table(json_file):
+    update, create_update = UpdateTime.objects.get_or_create(
             time=time,
-            date=date)
-        for row in json_file:
-                station_id = Station.objects.get(id=row['id'])
-                bike = Bike.objects.get_or_create(
-                    station=station_id,
-                    update=update[0],
-                    number_of_bikes=int(row['availableBikes']))
+            date=date
+    )
+    for row in json_file:
+        station = check_stations(row)
+        add_bikes_row(row, station, update)
+
+
+# checks JSON stations against DB stations.
+# Citibike sometimes changes the ID number of stations,
+# this is to ensure that bike data is staying consistent when
+# compared to station data
+def check_stations(row):
+    station, create_station = Station.objects.get_or_create(
+                    name=row['stationName'], defaults={'id': row['id'],
+                    'availableDocks': (row['availableDocks'] + row['availableBikes']),
+                    'latitude': row['latitude'],
+                    'longitude': row['longitude']})
+    return station
+
+
+# take in a json file row
+# parse and add to Bike Model
+def add_bikes_row(row, station, update):
+                bike, create_bike = Bike.objects.get_or_create(
+                    station=station,
+                    update=update,
+                    number_of_bikes=row['availableBikes'])
+
 
 
 if __name__ == '__main__':
-        add_bikes(station_info)
+    update_table(station_info)
