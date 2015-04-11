@@ -46,9 +46,28 @@ hr{
     background-color: #63bcb6;
 }
 
+.row {
+    margin: 0;
+}
+
+i.fa{
+    color: white;
+    padding: 0;
+}
+
+.auth h3 {
+    text-align: center;
+}
+
+.account {
+    margin-top: 40px;
+}
+
+.signin-options {
+    display: none;
+}
+
 .content {
-    margin-left: 15%;
-    max-width: 970px;
     border-left: 5px solid #533d36;
     min-height: 530px;
     padding: 20px 0 60px 10px;
@@ -206,6 +225,11 @@ h1, h2, h3, h4 {
     display: block;
     min-width: 150px;
     max-width: 150px;
+}
+
+.mybutton.signin-button {
+    float: none;
+    margin: 0px 32px 7px 32px;
 }
 
 .buttons{

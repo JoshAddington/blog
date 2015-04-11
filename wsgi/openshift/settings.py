@@ -66,6 +66,7 @@ INSTALLED_APPS = (
 INSTALLED_APPS += (
     'blog',
     'projects',
+    'social.apps.django_app.default',
     'citibike'
 )
 
@@ -130,16 +131,50 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
 )
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+if 'OPENSHIFT_REPO_DIR' in os.environ:
+    STATIC_ROOT = os.path.join(os.environ.get('OPENSHIFT_REPO_DIR'), 'wsgi', 'static')
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'staticfiles'),
+    os.path.join(BASE_DIR, '../static'),
 )
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
+
+# Python Social Auth Settings
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'social.backends.twitter.TwitterOAuth',
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.google.GooglePlusAuth',
+)
+
+MIDDLEWARE_CLASSES += (
+    'social.apps.django_app.middleware.SocialAuthExceptionMiddleware',
+)
+
+SOCIAL_AUTH_FACEBOOK_KEY = os.environ['SOCIAL_FACEBOOK_KEY']
+SOCIAL_AUTH_FACEBOOK_SECRET = os.environ['SOCIAL_FACEBOOK_SECRET']
+
+SOCIAL_AUTH_GOOGLE_PLUS_KEY = os.environ['SOCIAL_GOOGLE_CLIENT_ID']
+SOCIAL_AUTH_GOOGLE_PLUS_SECRET = os.environ['SOCIAL_GOOGLE_CLIENT_SECRET']
+
+SOCIAL_AUTH_TWITTER_KEY = os.environ['SOCIAL_TWITTER_CONSUMER_KEY']
+SOCIAL_AUTH_TWITTER_SECRET = os.environ['SOCIAL_TWITTER_CONSUMER_SECRET']
+
+SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+TEMPLATE_CONTEXT_PROCESSORS += (
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+)
