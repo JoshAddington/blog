@@ -152,8 +152,8 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 # Python Social Auth Settings
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
+    'social.backends.github.GithubOAuth2',
     'social.backends.twitter.TwitterOAuth',
-    'social.backends.facebook.FacebookOAuth2',
     'social.backends.google.GooglePlusAuth',
 )
 
@@ -161,8 +161,8 @@ MIDDLEWARE_CLASSES += (
     'social.apps.django_app.middleware.SocialAuthExceptionMiddleware',
 )
 
-SOCIAL_AUTH_FACEBOOK_KEY = os.environ['SOCIAL_FACEBOOK_KEY']
-SOCIAL_AUTH_FACEBOOK_SECRET = os.environ['SOCIAL_FACEBOOK_SECRET']
+SOCIAL_AUTH_GITHUB_KEY = os.environ['SOCIAL_GITHUB_ID']
+SOCIAL_AUTH_GITHUB_SECRET = os.environ['SOCIAL_GITHUB_SECRET']
 
 SOCIAL_AUTH_GOOGLE_PLUS_KEY = os.environ['SOCIAL_GOOGLE_CLIENT_ID']
 SOCIAL_AUTH_GOOGLE_PLUS_SECRET = os.environ['SOCIAL_GOOGLE_CLIENT_SECRET']
@@ -173,6 +173,8 @@ SOCIAL_AUTH_TWITTER_SECRET = os.environ['SOCIAL_TWITTER_CONSUMER_SECRET']
 SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+USE_SOCIAL_AUTH_AS_ADMIN_LOGIN = True
 
 TEMPLATE_CONTEXT_PROCESSORS += (
     'social.apps.django_app.context_processors.backends',

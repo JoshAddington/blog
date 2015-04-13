@@ -2,16 +2,16 @@
 {% load static from staticfiles %}
 <html>
 <head>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Poiret+One|Ubuntu:400'>
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.2.1/bootstrap-social.css">
         <script src="//apis.google.com/js/client:platform.js" async defer></script>
-        <title>Josh Addington</title>
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.8.0/bootstrap-social.min.css">
+        <title>Josh Addington</title>
 </head>
 <body>
+<div id="fb-root"></div>
 <div class="page-header">
         {% if user.is_superuser %}
                 <a href="{% url 'blog.views.post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
@@ -40,17 +40,18 @@
                            {% else %}
                             <button class="mybutton signin-button">Sign In</button>
                            <div class="signin-options">
-                               <a class="btn btn-block btn-social btn-facebook" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
-                                    <i class="fa fa-facebook"></i>Facebook
+
+                                <a class="btn btn-social-icon btn-google-plus" href="{% url 'social:begin' 'google-plus' %}?next={{ request.path }}">
+                                    <i class="fa fa-google-plus"></i>
                                </a>
 
-                               <a class="btn btn-block btn-social btn-google-plus" href="{% url 'social:begin' 'google-plus' %}?next={{ request.path }}">
-                                    <i class="fa fa-google-plus"></i>Google
-                               </a>
+                               <a class="btn btn-social-icon btn-twitter" href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
 
-                               <a class="btn btn-block btn-social btn-twitter" href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">
-                                    <i class="fa fa-twitter"></i>Twitter
-                               </a>
+                                <a class="btn btn-social-icon btn-github" href="{% url 'social:begin' 'github' %}?next={{ request.path }}">
+                                    <i class="fa fa-github-square fa-2"></i>
+                                </a>
                            </div>
                            {% endif %}
                         </div>

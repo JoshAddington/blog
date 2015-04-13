@@ -50,9 +50,13 @@ hr{
     margin: 0;
 }
 
-i.fa{
+a[class*="btn-social"] i.fa{
     color: white;
     padding: 0;
+}
+
+.auth:visited {
+    color: white;
 }
 
 .auth h3 {
@@ -108,7 +112,7 @@ h1, h2, h3, h4 {
     float: left;
 }
 
-/*  Blog/Project CSS  */
+/*  Blog/Project CSS
 .post-form textarea, .post-form input {
     width: 100%;
 }
