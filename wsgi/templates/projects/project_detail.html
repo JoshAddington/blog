@@ -8,7 +8,7 @@
                         <br>
                 {% endif%}
 
-                {% if user.is_authenticated %}
+                {% if user.is_superuser %}
                         {% if not project.published_date %}
                             <a href="{% url 'projects.views.project_publish' slug=project.slug %}"><input type="submit" value="Publish" class="mybutton spaced"></a><br>
                         {% endif %}

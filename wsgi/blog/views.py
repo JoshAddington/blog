@@ -20,7 +20,9 @@ def post_detail(request, slug):
         projects_length = len(post.project.all())
         form = CommentForm(request.POST or None)
         if form.is_valid():
+                print(request.user.email)
                 comment = form.save(commit=False)
+                comment.author = request.user.get_full_name()
                 comment.post = post
                 comment.save()
                 return redirect(request.path)

@@ -29,32 +29,8 @@
 </div>
 <div class="wrapper">
         <div class="row">
-                <div class="col-md-2 auth">
-                        <div class="account">
-                           {% if user and not user.is_anonymous %}
+                <div class="col-md-2">
 
-                               <a>Hello {{ user.get_full_name|default:user.username }}!</a>
-
-                               <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
-
-                           {% else %}
-                            <button class="mybutton signin-button">Sign In</button>
-                           <div class="signin-options">
-
-                                <a class="btn btn-social-icon btn-google-plus" href="{% url 'social:begin' 'google-plus' %}?next={{ request.path }}">
-                                    <i class="fa fa-google-plus"></i>
-                               </a>
-
-                               <a class="btn btn-social-icon btn-twitter" href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-
-                                <a class="btn btn-social-icon btn-github" href="{% url 'social:begin' 'github' %}?next={{ request.path }}">
-                                    <i class="fa fa-github-square fa-2"></i>
-                                </a>
-                           </div>
-                           {% endif %}
-                        </div>
                 </div>
                 <div class="col-md-9 content">
                 {% autoescape off %}

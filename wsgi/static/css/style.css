@@ -50,23 +50,6 @@ hr{
     margin: 0;
 }
 
-i.fa{
-    color: white;
-    padding: 0;
-}
-
-.auth h3 {
-    text-align: center;
-}
-
-.account {
-    margin-top: 40px;
-}
-
-.signin-options {
-    display: none;
-}
-
 .content {
     border-left: 5px solid #533d36;
     min-height: 530px;
@@ -108,9 +91,19 @@ h1, h2, h3, h4 {
     float: left;
 }
 
-/*  Blog/Project CSS  */
+/*  Blog/Project CSS */
 .post-form textarea, .post-form input {
     width: 100%;
+}
+
+a[class*="btn-social"] i.fa{
+    color: white;
+    padding: 0;
+    font-size: .85em;
+}
+
+.account:visited {
+    color: white;
 }
 
 .comment-form {
@@ -128,11 +121,15 @@ h1, h2, h3, h4 {
 
 .post h2 a,
 .post h2 a:visited {
-    font-size: 26pt;
+    font-size: 1.1em;
 }
 
 .post-content a{
     text-decoration: underline;
+}
+
+.signin_options h2 a{
+    font-size: .3em;
 }
 
 .blog-post{
