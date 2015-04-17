@@ -11,7 +11,7 @@
                                         <a href="{% url 'blog.views.post_publish' slug=post.slug %}"><input type="submit" value="Publish" class="mybutton spaced"></a><br>
                                 {% endif%}
 
-                                {% if user.is_authenticated %}
+                                {% if user.is_superuser %}
                                 <a  href="{% url 'post_edit' slug=post.slug %}"class="mybutton small"><span class="glyphicon glyphicon-edit"></span>
                                 </a>
                                 <a href="{% url 'post_delete' slug=post.slug %}" class="mybutton small"><span class="glyphicon glyphicon-remove"></span></a>
@@ -61,10 +61,39 @@
 
                         <div class="comment-form">
                                 <h3>Add Comment</h3>
-                                 <form method="POST" class='comment-form'>{% csrf_token %}
-                                {{ form.as_p }}
-                                <input type='submit' value='Save' class='mybutton'>
-                                </form>
+                                <div class="account">
+                                   {% if user.is_authenticated %}
+
+                                       <h4>{{ user.get_full_name }} <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a> <h4>
+
+
+
+                                       <form method="POST" class='comment-form'>{% csrf_token %}
+                                            {{ form.as_p }}
+                                            <input type='submit' value='Save' class='mybutton'>
+                                       </form>
+
+                                   {% else %}
+
+                                       <div class="signin-options">
+                                       <h2>Sign in to Comment
+                                            <a class="btn btn-social-icon btn-google-plus" href="{% url 'social:begin' 'google-plus' %}?next={{ request.path }}">
+                                                <i class="fa fa-google-plus"></i>
+                                           </a>
+
+                                           <a class="btn btn-social-icon btn-twitter" href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+
+                                            <a class="btn btn-social-icon btn-github" href="{% url 'social:begin' 'github' %}?next={{ request.path }}">
+                                                <i class="fa fa-github-alt fa-2"></i>
+                                            </a>
+                                            </h2>
+                                       </div>
+
+                                   {% endif %}
+                                </div>
+
                         </div>
 
                 {% endif %}

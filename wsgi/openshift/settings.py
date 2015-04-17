@@ -12,8 +12,10 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates/'),)
-LOGIN_REDIRECT_URL = '/'
 
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGIN_ERROR_URL = '/login-error/'
 
 # Running on OpenShift ?
 ON_OPENSHIFT = False
@@ -66,6 +68,7 @@ INSTALLED_APPS = (
 INSTALLED_APPS += (
     'blog',
     'projects',
+    'social.apps.django_app.default',
     'citibike'
 )
 
@@ -130,16 +133,67 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
 )
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+if 'OPENSHIFT_REPO_DIR' in os.environ:
+    STATIC_ROOT = os.path.join(os.environ.get('OPENSHIFT_REPO_DIR'), 'wsgi', 'static')
+    STATICFILES_DIRS = (os.path.join(os.environ.get('OPENSHIFT_REPO_DIR'), 'wsgi', '../static'),)
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    STATICFILES_DIRS = (os.path.join(BASE_DIR, '../static'),)
 STATIC_URL = '/static/'
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'staticfiles'),
-)
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
+
+# Python Social Auth Settings
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'social.backends.github.GithubOAuth2',
+    'social.backends.twitter.TwitterOAuth',
+    'social.backends.google.GooglePlusAuth',
+)
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    'social.pipeline.social_auth.associate_by_email',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details'
+)
+
+MIDDLEWARE_CLASSES += (
+    'social.apps.django_app.middleware.SocialAuthExceptionMiddleware',
+)
+
+SOCIAL_AUTH_PROTECTED_USER_FIELDS = ['email', 'username']
+SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'last_name', 'email']
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
+USE_SOCIAL_AUTH_AS_ADMIN_LOGIN = True
+
+SOCIAL_AUTH_GITHUB_KEY = os.environ['SOCIAL_GITHUB_ID']
+SOCIAL_AUTH_GITHUB_SECRET = os.environ['SOCIAL_GITHUB_SECRET']
+
+SOCIAL_AUTH_GOOGLE_PLUS_KEY = os.environ['SOCIAL_GOOGLE_CLIENT_ID']
+SOCIAL_AUTH_GOOGLE_PLUS_SECRET = os.environ['SOCIAL_GOOGLE_CLIENT_SECRET']
+GOOGLE_PLUS_AUTH_EXTRA_ARGUMENTS = {'fields': 'emails, aboutMe, displayName'}
+SOCIAL_AUTH_GOOGLE_PLUS_IGNORE_DEFAULT_SCOPE = True
+SOCIAL_AUTH_GOOGLE_PLUS_SCOPE = ['https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email']
+
+
+SOCIAL_AUTH_TWITTER_KEY = os.environ['SOCIAL_TWITTER_CONSUMER_KEY']
+SOCIAL_AUTH_TWITTER_SECRET = os.environ['SOCIAL_TWITTER_CONSUMER_SECRET']
+
+TEMPLATE_CONTEXT_PROCESSORS += (
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+)

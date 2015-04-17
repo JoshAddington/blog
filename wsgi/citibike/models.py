@@ -19,7 +19,7 @@ class Station(models.Model):
 
 class UpdateTime(models.Model):
         time = models.TimeField()
-        date = models.DateField(default=datetime.date.today())
+        date = models.DateField(default=datetime.date.today)
 
 
 class Bike(models.Model):

@@ -2,23 +2,22 @@
 {% load static from staticfiles %}
 <html>
 <head>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-        <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Poiret+One|Fira+Sans:300'>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Poiret+One|Ubuntu:400'>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
+        <script src="//apis.google.com/js/client:platform.js" async defer></script>
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.8.0/bootstrap-social.min.css">
         <title>Josh Addington</title>
 </head>
 <body>
+<div id="fb-root"></div>
 <div class="page-header">
-        {% if user.is_authenticated %}
+        {% if user.is_superuser %}
                 <a href="{% url 'blog.views.post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
 
                 <a href="{% url 'blog.views.post_new' %}" class='top-menu'><span class='glyphicon glyphicon-plus'></span></a>
 
-        {% else %}
-                <a href="{%  url 'django.contrib.auth.views.login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
         {% endif %}
         <div class="nav">
                 <a href="{% url 'blog.views.post_list' %}">Home</a>
@@ -28,9 +27,12 @@
         </div>
         <h1><a href='/'>Josh Addington</a></h1>
 </div>
-<div class="content container">
+<div class="wrapper">
         <div class="row">
-                <div class="col-md-11">
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-9 content">
                 {% autoescape off %}
                 {% block content %}
                 {% endblock content %}
@@ -42,5 +44,7 @@
 </div>
 {% block extra_js %}
 {% endblock extra_js %}
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/auth.js' %}"></script>
 </body>
 </html>

@@ -10,6 +10,7 @@ class PostForm(forms.ModelForm):
                 model = Post
                 fields = ('title', 'text', 'project')
 
+        # save function to auto-slugify
         def save(self, commit=True):
                 instance = super(PostForm, self).save(commit=False)
 
@@ -33,4 +34,4 @@ class PostForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
         class Meta:
                 model = Comment
-                fields = ('author', 'text')
+                fields = ('text',)
