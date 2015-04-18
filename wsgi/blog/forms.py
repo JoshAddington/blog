@@ -2,8 +2,7 @@ import itertools
 
 from django import forms
 from django.utils.text import slugify
-from blog.models import Post, Comment
-
+from blog.models import Post
 
 class PostForm(forms.ModelForm):
         class Meta:
@@ -29,9 +28,3 @@ class PostForm(forms.ModelForm):
                         instance.save()
 
                 return instance
-
-
-class CommentForm(forms.ModelForm):
-        class Meta:
-                model = Comment
-                fields = ('text',)

@@ -19,12 +19,3 @@ class Post(models.Model):
         def __str__(self):
                 return self.title
 
-
-class Comment(models.Model):
-        author = models.CharField(max_length=40, blank=False)
-        post = models.ForeignKey(Post)
-        text = models.TextField()
-        posted_date = models.DateTimeField(default=timezone.now)
-
-        def __str__(self):
-                return self.text

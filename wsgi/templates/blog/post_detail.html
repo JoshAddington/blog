@@ -44,58 +44,28 @@
                 </div>
                 {% if post.published_date %}
 
-                        {% if post.comment_set.all %}
-                        <h2>Comments</h2>
-                        <hr>
-                        <div class="blog_comments">
-                                {% for comment in post.comment_set.all %}
-                                <div class="date">
-                                        {{ comment.posted_date }}
-                                </div>
-                                <h3> {{comment.author }} </h3>
-                                {{ comment.text|linebreaks }}
-                                <hr>
-                                {% endfor %}
-                        </div>
-                        {% endif %}
-
-                        <div class="comment-form">
-                                <h3>Add Comment</h3>
-                                <div class="account">
-                                   {% if user.is_authenticated %}
-
-                                       <h4>{{ user.get_full_name }} <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a> <h4>
-
-
-
-                                       <form method="POST" class='comment-form'>{% csrf_token %}
-                                            {{ form.as_p }}
-                                            <input type='submit' value='Save' class='mybutton'>
-                                       </form>
-
-                                   {% else %}
-
-                                       <div class="signin-options">
-                                       <h2>Sign in to Comment
-                                            <a class="btn btn-social-icon btn-google-plus" href="{% url 'social:begin' 'google-plus' %}?next={{ request.path }}">
-                                                <i class="fa fa-google-plus"></i>
-                                           </a>
-
-                                           <a class="btn btn-social-icon btn-twitter" href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-
-                                            <a class="btn btn-social-icon btn-github" href="{% url 'social:begin' 'github' %}?next={{ request.path }}">
-                                                <i class="fa fa-github-alt fa-2"></i>
-                                            </a>
-                                            </h2>
-                                       </div>
-
-                                   {% endif %}
-                                </div>
-
-                        </div>
+                        <div id="disqus_thread"></div>
 
                 {% endif %}
         </div>
+
+        <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'joshaddington';
+    var disqus_identifier = '{{ post.id }}';
+    var disqus_title = '{{ post.title }}';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+     (function() {
+                                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            })();
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 {% endblock %}

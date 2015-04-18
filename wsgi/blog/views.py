@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from blog.models import Post, Comment
-from blog.forms import PostForm, CommentForm
+from blog.models import Post
+from blog.forms import PostForm
 
 
 def index(request):
@@ -18,15 +18,7 @@ def post_list(request):
 def post_detail(request, slug):
         post = get_object_or_404(Post, slug=slug)
         projects_length = len(post.project.all())
-        form = CommentForm(request.POST or None)
-        if form.is_valid():
-                print(request.user.email)
-                comment = form.save(commit=False)
-                comment.author = request.user.get_full_name()
-                comment.post = post
-                comment.save()
-                return redirect(request.path)
-        return render(request, 'blog/post_detail.html', {'post': post, 'projects_length': projects_length, 'form': form})
+        return render(request, 'blog/post_detail.html', {'post': post, 'projects_length': projects_length})
 
 
 @login_required

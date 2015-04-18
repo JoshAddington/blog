@@ -96,25 +96,6 @@ h1, h2, h3, h4 {
     width: 100%;
 }
 
-a[class*="btn-social"] i.fa{
-    color: white;
-    padding: 0;
-    font-size: .85em;
-}
-
-.account:visited {
-    color: white;
-}
-
-.comment-form {
-    padding-bottom: 15px;
-}
-
-.comment-form textarea {
-    width: 100%;
-    max-height: 150px;
-}
-
 .post {
     margin-bottom: 70px;
 }
@@ -126,10 +107,6 @@ a[class*="btn-social"] i.fa{
 
 .post-content a{
     text-decoration: underline;
-}
-
-.signin_options h2 a{
-    font-size: .3em;
 }
 
 .blog-post{
@@ -272,9 +249,5 @@ a[class*="btn-social"] i.fa{
 
 .fa {
     color: #533d36;
-    padding: 5px;
-}
-
-.login td{
     padding: 5px;
 }

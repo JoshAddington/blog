@@ -1,9 +1,5 @@
 from django.contrib import admin
-from blog.models import Post, Comment
-
-
-class CommentInline(admin.TabularInline):
-        model = Comment
+from blog.models import Post
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -17,12 +13,4 @@ class PostAdmin(admin.ModelAdmin):
         prepopulated_fields = {'slug': ('title',)}
 
 
-class CommentAdmin(admin.ModelAdmin):
-        fieldsets = [
-            (None, {'fields': ['author', 'post', 'text', 'posted_date']}),
-        ]
-
-        list_display = ('post', 'author', 'text')
-
 admin.site.register(Post, PostAdmin)
-admin.site.register(Comment, CommentAdmin)
