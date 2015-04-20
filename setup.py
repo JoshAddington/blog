@@ -3,7 +3,7 @@ import os
 
 
 setup(name='djangoblog',
-      version='0.4',
+      version='0.6',
       description='Django Blog',
       author='Josh Addington',
       author_email='addington.code@gmail.com',
@@ -14,6 +14,6 @@ setup(name='djangoblog',
            'django-grappelli',
            'psycopg2',
            'requests',
-           'whitenoise',
-           'python-social-auth'],
+           'six',
+           'whitenoise'],
       )

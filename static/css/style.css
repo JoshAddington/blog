@@ -18,26 +18,27 @@ hr{
 .page-header {
     background-color: #a4cebb;
     border-bottom: 15px solid #63bcb6;
-    margin: 0;
-    padding: 20px 80px 0 120px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 10px 40px 0 0;
 
 }
 
 .page-header h1,
 .page-header h1 a{
     font-size: 42pt;
-    margin-left: 120px;
-    padding: 10px;
+    margin: 0;
 }
 
 .header-wrapper{
     max-width: 1200px;
 }
+/*
 .nav{
-    padding-right: 80px;
+    padding-right: 40px;
     float: right;
 }
-
+*/
 .nav a{
     padding: 5px 10px;
 }

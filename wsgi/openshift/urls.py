@@ -12,14 +12,9 @@ urlpatterns = patterns('',
         url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
         url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
         url(r'^admin/', include(admin.site.urls)),
+        url(r'^boroughs/', views.boroughs),
         url(r'^contact/$', views.contact),
-        # url(r'^login/$', 'social.views.auth', {'backend': 'google'}, name='login'),
         url(r'^projects/', include('projects.urls')),
-        url('', include('social.apps.django_app.urls', namespace='social')),
+        url(r'^citibike/', include('citibike.urls')),
         url('', include('django.contrib.auth.urls', namespace='auth')),
-
-
 )
-
-# include static files
-# urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
