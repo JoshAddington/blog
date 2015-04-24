@@ -13,13 +13,6 @@ urlpatterns = patterns('',
         url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
         url(r'^admin/', include(admin.site.urls)),
         url(r'^contact/$', views.contact),
-        # url(r'^login/$', 'social.views.auth', {'backend': 'google'}, name='login'),
         url(r'^projects/', include('projects.urls')),
-        url('', include('social.apps.django_app.urls', namespace='social')),
         url('', include('django.contrib.auth.urls', namespace='auth')),
-
-
 )
-
-# include static files
-# urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
