@@ -137,11 +137,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 if 'OPENSHIFT_REPO_DIR' in os.environ:
-    STATIC_ROOT = os.path.join(os.environ.get('OPENSHIFT_REPO_DIR'), 'wsgi', '../static')
-    STATICFILES_DIRS = (os.path.join(os.environ.get('OPENSHIFT_REPO_DIR'), 'wsgi', 'static'),)
+    STATIC_ROOT = os.path.join(os.environ.get('OPENSHIFT_REPO_DIR'), 'wsgi', 'static')
+    STATICFILES_DIRS = (os.path.join(os.environ.get('OPENSHIFT_REPO_DIR'), 'wsgi', '../static'),)
 else:
-    STATIC_ROOT = os.path.join(BASE_DIR, '../static')
-    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    STATICFILES_DIRS = (os.path.join(BASE_DIR, '../static'),)
 STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
