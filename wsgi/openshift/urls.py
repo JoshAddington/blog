@@ -15,5 +15,6 @@ urlpatterns = patterns('',
         url(r'^boroughs/', views.boroughs),
         url(r'^contact/$', views.contact),
         url(r'^projects/', include('projects.urls')),
+        url(r'^citibike/', include('citibike.urls')),
         url('', include('django.contrib.auth.urls', namespace='auth')),
 )

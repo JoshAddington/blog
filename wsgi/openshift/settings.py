@@ -68,7 +68,8 @@ INSTALLED_APPS = (
 INSTALLED_APPS += (
     'blog',
     'projects',
-    'citibike'
+    'citibike',
+    'rest_framework'
 )
 
 MIDDLEWARE_CLASSES = (
