@@ -98,6 +98,7 @@ if ON_OPENSHIFT:  # production settings
             'PASSWORD': os.environ['OPENSHIFT_POSTGRESQL_DB_PASSWORD'],
             'HOST':     os.environ['OPENSHIFT_POSTGRESQL_DB_HOST'],
             'PORT':     os.environ['OPENSHIFT_POSTGRESQL_DB_PORT'],
+            'CONN_MAX_AGE': 600,
         }
     }
 else:  # dev settings
@@ -109,6 +110,7 @@ else:  # dev settings
             'PASSWORD': os.environ['BLOG_DB_PASSWORD'],
             'HOST': '',
             'PORT': '',
+            'CONN_MAX_AGE': 600,
         }
     }
 
