@@ -252,3 +252,7 @@ h1, h2, h3, h4 {
     color: #533d36;
     padding: 5px;
 }
+
+img.profile {
+    border-radius: 45%;
+}
