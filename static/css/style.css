@@ -3,57 +3,85 @@ body {
     font-family: 'Fira Sans', sans-serif;
     font-size: 12pt;
     line-height: 1.5em;
-    color: #533d36;
+    color: #312f2a;
 }
 
 a, a:visited, a:hover, a:active{
-    color: #533d36;
+    color: #312f2a;
     text-decoration: none;
 }
 
 hr{
-    border: 1px solid #533d36;
+    border: 1px solid #312f2a;
 }
 
 .page-header {
-    background-color: #a4cebb;
-    border-bottom: 15px solid #63bcb6;
+    font-family: 'Poiret One';
     margin-top: 0;
     margin-bottom: 0;
-    padding: 10px 40px 0 0;
-
+    height: 190px;
 }
 
-.page-header h1,
-.page-header h1 a{
-    font-size: 42pt;
-    margin: 0;
+.header-background {
+    object-fit: cover;
+    object-position: 50% 35% ;
+    width: 100vw;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-.header-wrapper{
-    max-width: 1200px;
+.glass {
+    position: relative;
+    padding-left: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-bottom: 1px solid;
+    border-bottom-color: #ccc;
+    border-bottom-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
-/*
-.nav{
-    padding-right: 40px;
-    float: right;
-}
-*/
-.nav a{
+
+.glass a{
+    z-index: 25;
+    font-size: 1.2em;
+    color: #fff;
     padding: 5px 10px;
 }
 
-.nav a:hover{
-    background-color: #63bcb6;
+.glass a:hover{
+    background-color: #4aada7;
 }
 
-.row {
-    margin: 0;
+.header-content {
+    z-index: 25;
+    width: 80%;
+    margin: 0 auto;
 }
+
+.push-right {
+    position: relative;
+    top: -30px;
+    left: 65%;
+}
+
+.header-content h1 {
+    text-align: center;
+    z-index: 20;
+    display: inline;
+}
+
+.header-content h1 a:hover{
+   color: #4aada7;
+   background-color: rgba(0, 0, 0, 0.2);
+}
+
+.top-menu, .top-menu:hover, .top-menu:visited {
+    margin: -3px 10px;
+}
+
 
 .content {
-    border-left: 5px solid #533d36;
-    min-height: 530px;
     padding: 20px 0 60px 10px;
 }
 
@@ -61,27 +89,20 @@ hr{
     text-decoration: underline;
 }
 
-h1, h2, h3, h4 {
+.wrapper h1, .wrapper h2,.wrapper h3,.wrapper h4 {
     font-family: 'Poiret One';
     font-weight: bold;
-    color: #533d36;
+    color: #312f2a;
 }
 
 .date {
     float: right;
-    color: #533d36;
+    color: #312f2a;
     font-weight: bold;
 }
 
 .save {
     float: right;
-}
-
-.top-menu, .top-menu:hover, .top-menu:visited {
-    color: #533d36;
-    float: right;
-    font-size: 26pt;
-    margin-right: 20px;
 }
 
 .right{
@@ -173,7 +194,7 @@ h1, h2, h3, h4 {
 }
 
 .mybutton:hover{
-    color: #533d36 ;
+    color: #312f2a ;
 }
 
 .mybutton:visited{
@@ -218,10 +239,6 @@ h1, h2, h3, h4 {
 
 
 /*  Site Pages CSS  */
-.row{
-    padding-bottom: 20px;
-}
-
 .contacts, .about{
     margin: 40px 0 0 80px;
 }
@@ -249,7 +266,7 @@ h1, h2, h3, h4 {
 }
 
 .fa {
-    color: #533d36;
+    color: #312f2a;
     padding: 5px;
 }
 

@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 
+{% load staticfiles %}
+
+{% block header-background %}
+        <img class="header-background" src="{% static 'img/headline/rally-dirt.jpg' %}">
+{% endblock %}
+
 {% block project %}
 
         {% if user.is_superuser %}

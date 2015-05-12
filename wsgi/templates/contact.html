@@ -1,4 +1,10 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block header-background %}
+        <img class="header-background" src="{% static 'img/headline/2002-tilt.jpg' %}">
+{% endblock %}
+
 
 {% block content %}
                         <div class='contacts'>

@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block header-background %}
+        <img class="header-background" src="{% static 'img/headline/abandoned-2002.jpg' %}">
+{% endblock %}
 
 {% block content %}
         {% for project in projects %}
