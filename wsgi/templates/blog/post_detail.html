@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block header-background %}
+        <img class="header-background" src="{% static 'img/headline/red-dirt-porsche.jpg' %}">
+{% endblock %}
 
 {% block content %}
         <div class="post">

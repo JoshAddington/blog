@@ -13,31 +13,40 @@
         <title>Josh Addington</title>
 </head>
 <body>
-<div id="fb-root"></div>
 <div class="page-header">
-        <div class="nav col-sm-offset-7">
-                <a href="{% url 'blog.views.post_list' %}">Home</a>
-                <a href="{% url 'openshift.views.about' %}">About</a>
-                <a href="{% url 'projects.views.project_list' %}">Projects</a>
-                <a href="{% url 'openshift.views.contact' %}">Contact</a>
-
-                 {% if user.is_superuser %}
-                        <a href="{% url 'blog.views.post_draft_list' %}" class="top-menu">
-                        <span class="glyphicon glyphicon-edit"></span></a>
-
-                        <a href="{% url 'blog.views.post_new' %}" class='top-menu'>
-                        <span class='glyphicon glyphicon-plus'></span></a>
-                {% endif %}
-        </div>
         <div class="row">
-                <div class="col-md-6 col-md-offset-4">
-                <h1><a href='/'>Josh Addington</a></h1>
-                </div>
+
+
+                                {% block header-background %}
+                                {% endblock header-background %}
+
+
+                                <div class="nav-bar glass">
+                                <div class="header-content">
+                                        <h1><a href='/'>Josh Addington</a></h1>
+                                        <div class="push-right">
+                                        <a href="{% url 'blog.views.post_list' %}">Home</a>
+                                        <a href="{% url 'openshift.views.about' %}">About</a>
+                                        <a href="{% url 'projects.views.project_list' %}">Projects</a>
+                                        <a href="{% url 'openshift.views.contact' %}">Contact</a>
+
+                                         {% if user.is_superuser %}
+                                                <a href="{% url 'blog.views.post_draft_list' %}" class="top-menu">
+                                                <span class="glyphicon glyphicon-edit"></span></a>
+
+                                                <a href="{% url 'blog.views.post_new' %}" class='top-menu'>
+                                                <span class='glyphicon glyphicon-plus'></span></a>
+                                        {% endif %}
+                                        </div>
+                                </div>
+
+                        </div>
+
         </div>
 </div>
 <div class="wrapper">
         <div class="row">
-                <div class="col-md-9 col-md-offset-2 content">
+                <div class="col-md-8 col-md-offset-2 content">
                 {% autoescape off %}
                 {% block content %}
                 {% endblock content %}
