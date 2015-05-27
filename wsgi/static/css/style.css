@@ -1,9 +1,15 @@
 /*  Base CSS  */
 body {
+    background-color: #ecf0f1;
     font-family: 'Fira Sans', sans-serif;
     font-size: 12pt;
     line-height: 1.5em;
     color: #533d36;
+}
+
+.post, .about, .contacts, .blog-post, .project {
+    background-color: #fff;
+    padding: 15px;
 }
 
 a, a:visited, a:hover, a:active{
