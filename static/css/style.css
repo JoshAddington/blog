@@ -1,9 +1,15 @@
 /*  Base CSS  */
 body {
+    background-color: #ecf0f1;
     font-family: 'Fira Sans', sans-serif;
     font-size: 12pt;
     line-height: 1.5em;
     color: #312f2a;
+}
+
+.post, .about, .contacts, .blog-post, .project {
+    background-color: #fff;
+    padding: 15px;
 }
 
 a, a:visited, a:hover, a:active{
@@ -73,9 +79,8 @@ hr{
     margin: -3px 10px;
 }
 
-
 .content {
-    padding: 20px 0 60px 10px;
+    padding: 30px 0 60px 10px;
 }
 
 .content a{
@@ -112,7 +117,7 @@ hr{
 }
 
 .post {
-    margin-bottom: 70px;
+    margin-bottom: 60px;
 }
 
 .post h2 a,
@@ -125,10 +130,7 @@ hr{
 }
 
 .blog-post{
-    min-height: 160px;
     margin-top: 10px;
-    padding: 5px 10px;
-    background-color: #efefef;
 }
 
 .errorlist{
@@ -232,12 +234,11 @@ hr{
 
 
 /*  Site Pages CSS  */
-.contacts, .about{
-    margin: 40px 0 0 80px;
+.contacts {
+    text-align: center;
 }
 
 .contacts h2{
-    margin-left: 75px;
     font-size: 32pt;
 }
 
