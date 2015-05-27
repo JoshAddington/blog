@@ -1,12 +1,16 @@
 /*  Base CSS  */
 body {
-
+    background-color: #ecf0f1;
     font-family: 'Fira Sans', sans-serif;
     font-size: 12pt;
     line-height: 1.5em;
     color: #312f2a;
 }
 
+.post, .about, .contacts, .blog-post, .project {
+    background-color: #fff;
+    padding: 15px;
+}
 
 a, a:visited, a:hover, a:active{
     color: #312f2a;
@@ -45,43 +49,35 @@ hr{
 }
 
 .glass a{
-    z-index: 25;
+    padding: 5px;
+    color: white;
     font-size: 1.2em;
-    color: #fff;
-    padding: 5px 10px;
 }
 
 .glass a:hover{
     background-color: #4aada7;
 }
 
-.header-content {
-    z-index: 25;
-    width: 80%;
-    margin: 0 auto;
+.glass h1 a:hover{
+    color: #4aada7;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
-.push-right {
-    position: relative;
-    top: -30px;
-    left: 65%;
+.nav-title h1{
+    margin-top: 0
 }
 
-.header-content h1 {
-    text-align: center;
-    z-index: 20;
-    display: inline;
+.nav-title h1 a {
+    padding: 9px;
 }
 
-.header-content h1 a:hover{
-   color: #4aada7;
-   background-color: rgba(0, 0, 0, 0.2);
+.nav-links {
+    margin-top: 25px;
 }
 
 .top-menu, .top-menu:hover, .top-menu:visited {
     margin: -3px 10px;
 }
-
 
 .content {
     padding: 30px 0 60px 10px;
@@ -238,9 +234,17 @@ hr{
 
 
 /*  Site Pages CSS  */
+<<<<<<< HEAD
 
 .contacts h2{
 
+=======
+.contacts {
+    text-align: center;
+}
+
+.contacts h2{
+>>>>>>> master
     font-size: 32pt;
 }
 

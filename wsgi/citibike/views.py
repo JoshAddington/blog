@@ -11,7 +11,7 @@ def station_collection(request):
         if request.method == 'GET':
                 stations = Station.objects.all()
                 serializer = StationSerializer(stations, many=True)
-                return Response(serializer.data)
+                return Response({'stations': serializer.data})
 
 
 @api_view(['GET'])
