@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from citibike.models import Station, Bike, UpdateTime
+from citibike.models import Station, UpdateTime
 
 
 class StationSerializer(serializers.ModelSerializer):
@@ -13,4 +13,5 @@ class UpdateTimeSerializer(serializers.ModelSerializer):
 
         class Meta:
                 model = UpdateTime
+                fields = ('id', 'time', 'date')
 
