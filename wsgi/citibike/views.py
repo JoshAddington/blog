@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from citibike.models import Station
+from citibike.models import Station, UpdateTime
 from citibike.serializers import StationSerializer
 
 
@@ -24,3 +24,11 @@ def station_element(request, pk):
         if request.method == 'GET':
                 serializer = StationSerializer(station)
                 return Response(serializer.data)
+
+
+@api_view(['GET'])
+def update_collection(request):
+        if request.method == 'GET':
+                updates = UpdateTime.objects.all()
+                serializer = UpdateSerializer(updates, many=True)
+                return Response({'timeline': serializer.data})
