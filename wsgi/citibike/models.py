@@ -21,13 +21,14 @@ class UpdateTime(models.Model):
         time = models.TimeField()
         date = models.DateField(default=datetime.date.today)
 
+        def __str__(self):
+                return str(self.date + " " + self.time)
+
 
 class Bike(models.Model):
-        station = models.ForeignKey(Station)
+        station = models.ForeignKey(Station, related_name='bikes')
         number_of_bikes = models.IntegerField()
-        update = models.ForeignKey(UpdateTime)
+        update = models.ForeignKey(UpdateTime, related_name='bike_update')
 
         def __str__(self):
                 return str(self.id)
-
-
