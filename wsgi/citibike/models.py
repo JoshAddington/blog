@@ -4,11 +4,10 @@ import datetime
 
 # Create your models here.
 class Station(models.Model):
-        id = models.IntegerField(primary_key=True)
         name = models.CharField(max_length=128, unique=True)
         availableDocks = models.IntegerField()
-        latitude = models.DecimalField(max_digits=12, decimal_places=9)
-        longitude = models.DecimalField(max_digits=12, decimal_places=9)
+        latitude = models.DecimalField(max_digits=15, decimal_places=12)
+        longitude = models.DecimalField(max_digits=15, decimal_places=12)
 
         def __str__(self):
                 return self.name
