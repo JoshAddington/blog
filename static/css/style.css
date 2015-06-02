@@ -234,17 +234,12 @@ hr{
 
 
 /*  Site Pages CSS  */
-<<<<<<< HEAD
 
-.contacts h2{
-
-=======
 .contacts {
     text-align: center;
 }
 
 .contacts h2{
->>>>>>> master
     font-size: 32pt;
 }
 
