@@ -22,16 +22,19 @@ hr{
 }
 
 .page-header {
+    margin: 0;
     font-family: 'Poiret One';
-    margin-top: 0;
-    margin-bottom: 0;
     height: 190px;
+}
+
+.row{
+    margin: 0;
 }
 
 .header-background {
     object-fit: cover;
     object-position: 50% 35% ;
-    width: 100vw;
+    width: 100%;
     height: 200px;
     position: absolute;
     top: 0;
@@ -39,6 +42,7 @@ hr{
 }
 
 .glass {
+    width: 100%;
     position: relative;
     padding-left: 10px;
     background-color: rgba(0, 0, 0, 0.6);
@@ -79,9 +83,8 @@ hr{
     margin: -3px 10px;
 }
 
-
 .content {
-    padding: 20px 0 60px 10px;
+    padding: 30px 0 60px 10px;
 }
 
 .content a{
@@ -244,6 +247,7 @@ hr{
 }
 
 .contact{
+    text-align: center;
     display: inline;
     height: 200px;
 }
