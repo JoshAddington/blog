@@ -1,8 +1,8 @@
-from openshift import views
+from mysite import views
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf.urls.static import static
-from openshift import settings
+from . import settings
 admin.autodiscover()
 
 urlpatterns = patterns('',
