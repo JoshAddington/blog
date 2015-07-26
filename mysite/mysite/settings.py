@@ -1,5 +1,5 @@
 """
-Django settings for openshift project.
+Django settings for mysite project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -83,9 +83,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
 )
 
-ROOT_URLCONF = 'openshift.urls'
+ROOT_URLCONF = 'mysite.urls'
 
-WSGI_APPLICATION = 'openshift.wsgi.application'
+WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
@@ -148,4 +148,3 @@ else:
 STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'

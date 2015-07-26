@@ -1,7 +1,7 @@
 import requests
 import datetime
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "openshift.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
 
 import django
 django.setup()
