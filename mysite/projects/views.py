@@ -3,8 +3,8 @@ import json
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from projects.models import Project
-from projects.forms import ProjectForm
+from .models import Project
+from .forms import ProjectForm
 
 
 def project_list(request):

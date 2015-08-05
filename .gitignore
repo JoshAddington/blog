@@ -1,8 +1,10 @@
 .idea
 *.pyc
-static/
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+# collectstatic files
+www/static/*

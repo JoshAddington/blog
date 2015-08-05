@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-import django.utils.timezone
 from django.conf import settings
+import django.utils.timezone
 
 
 class Migration(migrations.Migration):
@@ -15,37 +15,16 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Comment',
-            fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
-                ('author', models.CharField(max_length=25)),
-                ('text', models.TextField()),
-                ('posted_date', models.DateTimeField(default=django.utils.timezone.now)),
-            ],
-            options={
-            },
-            bases=(models.Model,),
-        ),
-        migrations.CreateModel(
             name='Post',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
+                ('id', models.AutoField(serialize=False, auto_created=True, verbose_name='ID', primary_key=True)),
                 ('title', models.CharField(max_length=200)),
-                ('slug', models.SlugField()),
+                ('slug', models.SlugField(unique=True)),
                 ('text', models.TextField()),
                 ('created_date', models.DateTimeField(default=django.utils.timezone.now)),
                 ('published_date', models.DateTimeField(null=True, blank=True)),
                 ('author', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
-                ('project', models.ManyToManyField(to='projects.Project', blank=True)),
+                ('project', models.ManyToManyField(blank=True, to='projects.Project')),
             ],
-            options={
-            },
-            bases=(models.Model,),
-        ),
-        migrations.AddField(
-            model_name='comment',
-            name='post',
-            field=models.ForeignKey(to='blog.Post'),
-            preserve_default=True,
         ),
     ]
