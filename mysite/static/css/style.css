@@ -1,0 +1,282 @@
+/*********************  Base CSS  ****************/
+body {
+    background-color: #ecf0f1;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 12pt;
+    line-height: 1.5em;
+    color: #312f2a;
+}
+
+.post, .about, .contacts, .blog-post, .project {
+    background-color: #fff;
+    padding: 15px;
+}
+
+a, a:visited, a:hover, a:active{
+    color: #312f2a;
+    text-decoration: none;
+}
+
+.row {
+    margin: 0;
+}
+
+hr{
+    border: 1px solid #312f2a;
+}
+
+/**********************
+* Header Styles
+***********************/
+
+.page-header {
+    font-family: 'Poiret One';
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 190px;
+}
+
+.header-background {
+    object-fit: cover;
+    object-position: 50% 35% ;
+    width: 100%;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.glass {
+    position: relative;
+    padding-left: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-bottom: 1px solid;
+    border-bottom-color: #ccc;
+    border-bottom-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.glass a{
+    padding: 5px;
+    color: white;
+    font-size: 1.2em;
+}
+
+.glass a:hover{
+    background-color: #4aada7;
+}
+
+.glass h1 a:hover{
+    color: #4aada7;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.nav-title h1{
+    margin-top: 0
+}
+
+.nav-title h1 a {
+    padding: 9px;
+}
+
+.nav-links {
+    margin-top: 25px;
+}
+
+.top-menu, .top-menu:hover, .top-menu:visited {
+    margin: -3px 10px;
+}
+
+/****************************
+* Content Display Styles
+****************************/
+
+.content {
+    padding: 20px 0 60px 10px;
+}
+
+.content a{
+    text-decoration: underline;
+}
+
+.wrapper h1, .wrapper h2,.wrapper h3,.wrapper h4 {
+    font-family: 'Poiret One';
+    font-weight: bold;
+    color: #312f2a;
+}
+
+.date {
+    float: right;
+    color: #312f2a;
+    font-weight: bold;
+}
+
+.save {
+    float: right;
+}
+
+.right{
+    float: right;
+}
+
+.left{
+    float: left;
+}
+
+/**********************  Blog/Project CSS **********************/
+
+.post-form textarea, .post-form input {
+    width: 100%;
+}
+
+.post {
+    margin-bottom: 60px;
+}
+
+.post h2 a,
+.post h2 a:visited {
+    font-size: 1.1em;
+}
+
+.post-content a{
+    text-decoration: underline;
+}
+
+.blog-post{
+    margin-top: 10px;
+}
+
+.errorlist{
+    color: #ad4937;
+}
+
+
+
+/****************** Project CSS ***************/
+
+#map{
+    width: 600px;
+    height: 850px;
+}
+
+#mapbox{
+    width: 600px;
+    height: 550px;
+}
+
+.post-relation, .project-relation{
+    margin: 10px 0;
+    font-style: italic;
+}
+
+.post-relation a, .project-relation a{
+    text-decoration: underline;
+}
+/*******************************  Button CSS  *********************/
+.mybutton {
+    float: right;
+    position: relative;
+    vertical-align: top;
+    max-width: 120px;
+    min-width: 120px;
+    height: 50px;
+    padding: 0;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    background: #c76250;
+    border: 0;
+    border-bottom: 2px solid #ad4937;
+    cursor: pointer;
+    -webkit-box-shadow: inset 0 -2px #ad4937;
+    box-shadow: inset 0 -2px #ad4937;
+}
+
+.mybutton:active {
+    top: 1px;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.mybutton:hover{
+    color: #312f2a ;
+}
+
+.mybutton:visited{
+    color: white;
+}
+
+.mybutton.spaced{
+    margin: 20px 5px 0 10px;
+}
+
+.mybutton.left{
+    float: left;
+    margin: 20px 5px 0 10px;
+}
+
+.mybutton.small{
+    max-width: 50px;
+    min-width: 50px;
+    margin: 7px;
+    font-size: 22pt;
+}
+
+.mybutton.project {
+    display: block;
+    min-width: 150px;
+    max-width: 150px;
+}
+
+.mybutton.signin-button {
+    float: none;
+    margin: 0px 32px 7px 32px;
+}
+
+.buttons{
+    float: right;
+    margin: 0 0 15px 15px;
+}
+
+.small span{
+    padding-top: 6px;
+}
+
+
+/******************************  Site Pages CSS  *******************/
+.contacts {
+    text-align: center;
+}
+
+.contacts h2{
+    font-size: 32pt;
+}
+
+.contact{
+    display: inline;
+    height: 200px;
+}
+
+.contact a{
+    font-size: 18pt;
+}
+
+.contact h3{
+    font-size: 24pt;
+}
+
+.contact i{
+    padding-right: 25px;
+}
+
+.fa {
+    color: #312f2a;
+    padding: 5px;
+}
+
+img.profile {
+    border-radius: 45%;
+}

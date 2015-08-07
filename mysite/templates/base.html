@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static from staticfiles %}
+<html>
+<head>
+        <meta name=viewport content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="{% static 'favicon.ico' %}"/>
+        <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Poiret+One|Ubuntu:400'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+                <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-65834324-1', 'auto');
+              ga('send', 'pageview');
+
+        </script>
+        <title>Josh Addington</title>
+</head>
+<body>
+<div class="page-header">
+        <div class="row">
+                        {% block header-background %}
+                        {% endblock header-background %}
+
+                        <div class="navbar glass">
+                                <div class="nav-title col-md-4 col-md-offset-1"><h1><a href='/'>Josh Addington</a></h1></div>
+                                <div class="nav-links col-md-4 col-md-offset-3">
+                                    <a href="{% url 'blog.views.post_list' %}">Home</a>
+                                    <a href="{% url 'mysite.views.about' %}">About</a>
+                                    <a href="{% url 'projects.views.project_list' %}">Projects</a>
+                                    <a href="{% url 'mysite.views.contact' %}">Contact</a>
+
+                                     {% if user.is_superuser %}
+                                            <a href="{% url 'blog.views.post_draft_list' %}" class="top-menu">
+                                            <span class="glyphicon glyphicon-edit"></span></a>
+
+                                            <a href="{% url 'blog.views.post_new' %}" class='top-menu'>
+                                            <span class='glyphicon glyphicon-plus'></span></a>
+                                    {% endif %}
+                                </div>
+                        </div>
+
+        </div>
+</div>
+<div class="wrapper">
+        <div class="row">
+                <div class="col-md-8 col-md-offset-2 content">
+                {% autoescape off %}
+                {% block content %}
+                {% endblock content %}
+                {%  block project %}
+                {% endblock project %}
+                {% endautoescape %}
+                </div>
+        </div>
+</div>
+{% block extra_js %}
+{% endblock extra_js %}
+</body>
+</html>
