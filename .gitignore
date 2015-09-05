@@ -1,5 +1,6 @@
 .idea
 *.pyc
+celerybeat.pid
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
