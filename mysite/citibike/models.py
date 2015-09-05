@@ -1,5 +1,7 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 import datetime
+import jsonfield
 
 
 # Create your models here.
@@ -32,3 +34,23 @@ class Bike(models.Model):
 
         def __str__(self):
                 return str(self.id)
+
+
+class TaskHistory(models.Model):
+    name = models.CharField(
+        max_length=100,
+        verbose_name=_("Task Name"),
+        help_text=_("select a task to record"),
+    )
+    history = jsonfield.JSONField(
+        default={},
+        verbose_name=_("history"),
+        help_text=_("JSON containing the tasks history")
+    )
+
+    class Meta:
+        verbose_name = _('Task History')
+        verbose_name_plural = _('Task Histories')
+
+        def __str__(self):
+            return _("Task History of Task: %s") % self.name
