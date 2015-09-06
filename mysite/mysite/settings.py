@@ -46,6 +46,7 @@ INSTALLED_APPS += (
     'projects',
     'rest_framework',
     'djcelery',
+    'kombu.transport.django',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -128,10 +129,11 @@ STATICFILES_DIRS = (
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # RabbitMQ settings
-BROKER_URL = "amqp://%s:%s@localhost:5672/myvhost" % (
-    os.environ['RABBITMQ_USER'],
-    os.environ['RABBITMQ_PASSWORD'])
+# BROKER_URL = "amqp://%s:%s@localhost:5672/myvhost" % (
+    # os.environ['RABBITMQ_USER'],
+    # os.environ['RABBITMQ_PASSWORD'])
 
 # Celery Settings
+BROKER_URL = 'django://'
 CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
