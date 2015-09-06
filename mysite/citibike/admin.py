@@ -1,3 +1,11 @@
 from django.contrib import admin
+from . import models
 
-# Register your models here.
+
+class TaskHistoryAdminModel(admin.ModelAdmin):
+    list_display = ("name",)
+
+    class Meta:
+        models.TaskHistory
+
+admin.site.register(models.TaskHistory, TaskHistoryAdminModel)
