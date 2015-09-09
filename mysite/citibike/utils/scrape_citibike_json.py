@@ -43,7 +43,7 @@ def update_table(json_file, date, time):
 def check_stations(row):
     station, create_station = Station.objects.get_or_create(
         name=row['stationName'],
-        defaults={'id': row['id'],
+        defaults={'station_id': row['id'],
                   'availableDocks': (
                       row['availableDocks'] + row['availableBikes']),
                   'latitude': row['latitude'],
