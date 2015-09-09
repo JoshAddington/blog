@@ -6,7 +6,7 @@ import jsonfield
 
 # Create your models here.
 class Station(models.Model):
-        id = models.IntegerField(primary_key=True)
+        station_id = models.IntegerField()
         name = models.CharField(max_length=128, unique=True)
         availableDocks = models.IntegerField()
         latitude = models.DecimalField(max_digits=12, decimal_places=9)
@@ -20,8 +20,8 @@ class Station(models.Model):
 
 
 class UpdateTime(models.Model):
-        time = models.TimeField()
-        date = models.DateField(default=datetime.date.today)
+        time = models.TimeField(auto_now_add=True)
+        date = models.DateField(auto_now_add=True)
 
         def __str__(self):
                 return str(self.date + " " + self.time)
