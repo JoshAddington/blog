@@ -134,10 +134,11 @@ STATICFILES_DIRS = (
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-RabbitMQ settings
-BROKER_URL = "amqp://%s:%s@localhost:5672/myvhost" % (
+# RabbitMQ settings
+BROKER_URL = "amqp://%s:%s@localhost:5672/%s" % (
     os.environ['RABBITMQ_USER'],
-    os.environ['RABBITMQ_PASSWORD'])
+    os.environ['RABBITMQ_PASSWORD'],
+    os.environ['RABBITMQ_VHOST'])
 
 # Celery Settings
 # BROKER_URL = 'django://'
