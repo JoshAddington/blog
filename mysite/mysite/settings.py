@@ -141,6 +141,5 @@ BROKER_URL = "amqp://%s:%s@localhost:5672/%s" % (
     os.environ['RABBITMQ_VHOST'])
 
 # Celery Settings
-# BROKER_URL = 'django://'
 CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
