@@ -24,7 +24,7 @@ class UpdateTime(models.Model):
         date = models.DateField(auto_now_add=True)
 
         def __str__(self):
-                return str(self.date + " " + self.time)
+                return self.date.__str__() + " " + self.time.__str__()
 
 
 class Bike(models.Model):
@@ -34,6 +34,9 @@ class Bike(models.Model):
 
         def __str__(self):
                 return str(self.id)
+
+        def __int__(self):
+                return int(number_of_bikes)
 
 
 class TaskHistory(models.Model):
