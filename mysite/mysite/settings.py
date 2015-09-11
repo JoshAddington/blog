@@ -49,10 +49,11 @@ INSTALLED_APPS = (
 INSTALLED_APPS += (
     'blog',
     'citibike',
-    'projects',
-    'rest_framework',
+    'debug_toolbar',
     'djcelery',
     'kombu.transport.django',
+    'projects',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
