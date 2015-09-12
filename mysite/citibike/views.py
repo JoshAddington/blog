@@ -12,7 +12,7 @@ from .serializers import StationSerializer, StationBikeSerializer
 
 # Create your views here.
 def boroughs(request):
-        return JsonResponse(json.loads(open(os.path.join(settings.STATIC_ROOT, 'citibike', 'nyc.json')).read()))
+    return JsonResponse(json.loads(open(os.path.join(settings.STATIC_ROOT, 'citibike', 'nyc.json')).read()))
 
 
 @api_view(['GET'])
