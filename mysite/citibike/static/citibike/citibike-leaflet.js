@@ -6,7 +6,7 @@ var map = new L.Map("mapbox", {center: [40.73394999, -73.96100056], zoom: 12})
 var svg = d3.select(map.getPanes().overlayPane).append("svg"),
     g = svg.append("g").attr("class", "leaflet-zoom-hide");
 
-d3.json("/boroughs", function(collection) {
+d3.json("/api/citibike/boroughs", function(collection) {
     var transform = d3.geo.transform({point: projectPoint}),
       path = d3.geo.path().projection(transform);
 
