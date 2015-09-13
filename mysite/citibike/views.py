@@ -8,36 +8,53 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .models import Station, UpdateTime
-from .serializers import StationSerializer, StationBikeSerializer, UpdateTimeSerializer
+from .serializers import StationSerializer, StationBikeSerializer, StationBikesSerializer, UpdateTimeSerializer
+
 
 # Create your views here.
 def boroughs(request):
-    return JsonResponse(json.loads(open(os.path.join(settings.STATIC_ROOT, 'citibike', 'nyc.json')).read()))
+    return JsonResponse(
+        json.loads(open(
+            os.path.join(settings.STATIC_ROOT, 'citibike', 'nyc.json')).read()
+            )
+        )
+
+
+@api_view(['GET'])
+def citibike_map(request):
+    if request.method == 'GET':
+        stations = Station.objects.all().prefetch_related('bikes')
+        station_serializer = StationBikesSerializer(stations, many=True)
+        return Response({'stations': station_serializer.data})
+
 
 @api_view(['GET'])
 def station_collection(request):
     if request.method == 'GET':
         stations = Station.objects.all()
         serializer = StationSerializer(stations, many=True)
-        return Response(serializer.data)
+        return Response({'stations': serializer.data})
+
 
 @api_view(['GET'])
 def station_detail(request, pk):
     if request.method == 'GET':
         station = get_object_or_404(Station, station_id=pk)
         serializer = StationSerializer(station)
-        return Response(serializer.data)
+        return Response({'station': serializer.data})
+
 
 @api_view(['GET'])
 def station_bikes(request, pk):
     if request.method == 'GET':
-        station = get_object_or_404(Station, station_id=pk)
+        station = get_object_or_404(Station.objects.all().prefetch_related('bikes'), station_id=pk)
         serializer = StationBikeSerializer(station)
-        return Response(serializer.data)
+        return Response({'station': serializer.data})
+
 
 @api_view(['GET'])
 def updates(request):
     if request.method == 'GET':
         updates = UpdateTime.objects.all()
         serializer = UpdateTimeSerializer(updates, many=True)
-        return Response(serializer.data)
+        return Response({'updates': serializer.data})
