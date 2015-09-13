@@ -5,7 +5,7 @@ import jsonfield
 
 # Create your models here.
 class Station(models.Model):
-        station_id = models.IntegerField()
+        station_id = models.IntegerField(unique=True)
         name = models.CharField(max_length=128, unique=True)
         available_docks = models.IntegerField()
         latitude = models.DecimalField(max_digits=12, decimal_places=9)
@@ -28,7 +28,7 @@ class UpdateTime(models.Model):
 
 
 class Bike(models.Model):
-        station = models.ForeignKey(Station, related_name='bikes')
+        station = models.ForeignKey(Station, to_field='station_id', related_name='bikes')
         number_of_bikes = models.IntegerField()
         update = models.ForeignKey(UpdateTime, related_name='bike_update')
         created_at = models.DateTimeField(auto_now_add=True)
