@@ -21,9 +21,10 @@ class Station(models.Model):
 class UpdateTime(models.Model):
         time = models.TimeField(auto_now_add=True)
         date = models.DateField(auto_now_add=True)
+        datetime = models.DateTimeField(auto_now_add=True)
 
         def __str__(self):
-                return self.date.__str__() + " " + self.time.__str__()
+                return str(self.datetime)
 
 
 class Bike(models.Model):
