@@ -28,7 +28,8 @@ def scrape_json():
 def update_table(json_file, date, time):
     update, create_update = UpdateTime.objects.get_or_create(
         time=time,
-        date=date
+        date=date,
+        datetime=(" ".join((date, time)))
     )
     for row in json_file:
         station = check_stations(row)
