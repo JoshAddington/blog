@@ -7,4 +7,5 @@ urlpatterns = patterns('',
     url(r'^stations/$', views.station_collection),
     url(r'^stations/(?P<pk>[0-9]+)/$', views.station_detail),
     url(r'^stations/(?P<pk>[0-9]+)/bikes$', views.station_bikes),
+    url(r'^updates/$', views.updates),
 )

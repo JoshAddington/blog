@@ -1,5 +1,7 @@
+from datetime import datetime
 from rest_framework import serializers
 from .models import Station, Bike, UpdateTime
+
 
 class StationSerializer(serializers.ModelSerializer):
 
@@ -25,3 +27,15 @@ class StationBikeSerializer(serializers.ModelSerializer):
         updates = bikes.values_list('created_at', flat=True)
         update_list = [update.strftime("%A, %B %d, %Y %I:%M %p") for update in updates]
         return update_list
+
+
+class UpdateTimeSerializer(serializers.ModelSerializer):
+    update = serializers.SerializerMethodField('update_format')
+
+    class Meta:
+        model = UpdateTime
+        fields = ('update',)
+
+    def update_format(self, obj):
+        updates_format = datetime.strptime(str(obj)[:-6], '%Y-%m-%d %H:%M:%S.%f').strftime('%A, %B %d, %Y %I:%M %p')
+        return updates_format
