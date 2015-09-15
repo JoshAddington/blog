@@ -12,7 +12,7 @@ class StationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Station
-        fields = ('station_id',
+        fields = ('station_number',
                   'name',
                   'available_docks',
                   'latitude',
@@ -25,7 +25,7 @@ class StationBikeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Station
-        fields = ('station_id',
+        fields = ('station_number',
                   'name',
                   'available_docks',
                   'latitude',
@@ -45,7 +45,7 @@ class StationMapSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Station
-        fields = ('station_id',
+        fields = ('station_number',
                   'name',
                   'available_docks',
                   'latitude',
