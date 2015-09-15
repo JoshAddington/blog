@@ -8,7 +8,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .models import Station, UpdateTime
-from .serializers import StationSerializer, StationBikeSerializer, StationBikesSerializer, UpdateTimeSerializer
+from .serializers import StationSerializer, StationBikeSerializer, StationMapSerializer
 
 
 # Create your views here.
@@ -23,9 +23,11 @@ def boroughs(request):
 @api_view(['GET'])
 def citibike_map(request):
     if request.method == 'GET':
-        stations = Station.objects.all().prefetch_related('bikes')
-        station_serializer = StationBikesSerializer(stations, many=True)
-        return Response({'stations': station_serializer.data})
+        stations = Station.objects.all().prefetch_related('bikes__update')
+        station_serializer = StationMapSerializer(stations, many=True)
+        updates = UpdateTime.objects.values_list('datetime', flat=True)
+        return Response({'stations': station_serializer.data,
+                         'updates': updates})
 
 
 @api_view(['GET'])
@@ -47,7 +49,7 @@ def station_detail(request, pk):
 @api_view(['GET'])
 def station_bikes(request, pk):
     if request.method == 'GET':
-        station = get_object_or_404(Station.objects.all().prefetch_related('bikes'), station_id=pk)
+        station = get_object_or_404(Station.objects.all().prefetch_related('bikes__update'), station_id=pk)
         serializer = StationBikeSerializer(station)
         return Response({'station': serializer.data})
 
@@ -55,6 +57,5 @@ def station_bikes(request, pk):
 @api_view(['GET'])
 def updates(request):
     if request.method == 'GET':
-        updates = UpdateTime.objects.all()
-        serializer = UpdateTimeSerializer(updates, many=True)
-        return Response({'updates': serializer.data})
+        updates = UpdateTime.objects.values_list('datetime', flat=True)
+        return Response({'updates': updates})

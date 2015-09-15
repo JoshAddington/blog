@@ -39,12 +39,8 @@ class StationBikeSerializer(serializers.ModelSerializer):
         update_list = [update.strftime("%A, %B %d, %Y %I:%M %p") for update in updates]
         return update_list
 
-    #
-    # def station_bike_count(self, obj):
-    #     bikes = Bike.objects.filter(station=obj).order_by('update').prefetch_related()
-    #     return bikes.values_list('number_of_bikes', flat=True)
 
-class StationBikesSerializer(serializers.ModelSerializer):
+class StationMapSerializer(serializers.ModelSerializer):
     bikes = BikeInStationField(many=True, read_only=True)
 
     class Meta:
@@ -55,23 +51,3 @@ class StationBikesSerializer(serializers.ModelSerializer):
                   'latitude',
                   'longitude',
                   'bikes')
-
-
-class StationMapSerializer(serializers.ModelSerializer):
-    bike_count = serializers.SerializerMethodField('station_bike_count')
-
-    class Meta:
-        model = Station
-        # fields
-
-
-class UpdateTimeSerializer(serializers.ModelSerializer):
-    update = serializers.SerializerMethodField('update_format')
-
-    class Meta:
-        model = UpdateTime
-        fields = ('update',)
-
-    def update_format(self, obj):
-        updates_format = datetime.strptime(str(obj)[:-6], '%Y-%m-%d %H:%M:%S.%f').strftime('%A, %B %d, %Y %I:%M %p')
-        return updates_format
