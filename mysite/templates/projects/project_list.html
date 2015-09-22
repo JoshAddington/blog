@@ -23,10 +23,10 @@
                 <div class="date">
                         {{ project.published_date }}
                 </div>
-                <a href="{% url 'projects.views.project_detail' slug=project.slug  %}"><h2>{{ project.title }}</h2>
-                <p>
+                <a href="{% url 'projects.views.project_detail' slug=project.slug  %}"><h2 class="project-link">{{ project.title }}</h2>
+                <div class="preview">
                         {{ project.content|linebreaks }}
-                </p>
+                </div>
                 <img src=" {{ project.preview }}">
                 </a>
         </div>

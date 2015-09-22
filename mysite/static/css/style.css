@@ -95,7 +95,7 @@ hr{
     padding: 20px 0 60px 10px;
 }
 
-.content a{
+.project-link{
     text-decoration: underline;
 }
 
@@ -149,8 +149,6 @@ hr{
 .errorlist{
     color: #ad4937;
 }
-
-
 
 /****************** Project CSS ***************/
 
