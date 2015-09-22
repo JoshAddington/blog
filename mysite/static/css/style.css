@@ -95,7 +95,7 @@ hr{
     padding: 20px 0 60px 10px;
 }
 
-.project-link{
+.post-link, .project-link{
     text-decoration: underline;
 }
 
@@ -129,7 +129,7 @@ hr{
     width: 100%;
 }
 
-.post {
+.post, .project{
     margin-bottom: 60px;
 }
 
