@@ -6,7 +6,7 @@
         <img class="header-background" src="{% static 'img/headline/rally-dirt.jpg' %}">
 {% endblock %}
 
-{% block project %}
+{% block content %}
 
         {% if user.is_superuser %}
         <div class="buttons">
@@ -32,4 +32,4 @@
         </div>
 
         {% endfor %}
-{% endblock project %}
+{% endblock content %}
