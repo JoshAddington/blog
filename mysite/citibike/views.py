@@ -42,7 +42,7 @@ def station_collection(request):
 @api_view(['GET'])
 def station_detail(request, pk):
     if request.method == 'GET':
-        station = get_object_or_404(Station, station_id=pk)
+        station = get_object_or_404(Station, station_number=pk)
         serializer = StationSerializer(station)
         return Response({'station': serializer.data})
 
@@ -50,7 +50,7 @@ def station_detail(request, pk):
 @api_view(['GET'])
 def station_bikes(request, pk):
     if request.method == 'GET':
-        station = get_object_or_404(Station.objects.all().prefetch_related(Prefetch('bikes', queryset=Bike.objects.order_by('update'))), station_id=pk)
+        station = get_object_or_404(Station.objects.all().prefetch_related(Prefetch('bikes', queryset=Bike.objects.order_by('update'))), station_number=pk)
         serializer = StationBikeSerializer(station)
         return Response({'station': serializer.data})
 
