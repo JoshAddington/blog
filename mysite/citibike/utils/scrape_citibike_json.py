@@ -28,7 +28,8 @@ def scrape_json():
 def update_table(json_file, date, time):
     update, create_update = UpdateTime.objects.get_or_create(
         time=time,
-        date=date
+        date=date,
+        datetime=(" ".join((date, time)))
     )
     for row in json_file:
         station = check_stations(row)
@@ -43,8 +44,8 @@ def update_table(json_file, date, time):
 def check_stations(row):
     station, create_station = Station.objects.get_or_create(
         name=row['stationName'],
-        defaults={'station_id': row['id'],
-                  'availableDocks': (
+        defaults={'station_number': row['id'],
+                  'available_docks': (
                       row['availableDocks'] + row['availableBikes']),
                   'latitude': row['latitude'],
                   'longitude': row['longitude']})
