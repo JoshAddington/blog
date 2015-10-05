@@ -54,6 +54,7 @@ INSTALLED_APPS += (
     'kombu.transport.django',
     'projects',
     'rest_framework',
+    'storages',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -146,6 +147,23 @@ STATICFILES_DIRS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+
+# AWS S3 Bucket settings
+
+AWS_STORAGE_BUCKET_NAME = os.environ['S3_BUCKET_NAME']
+AWS_S3_DOMAIN = "s3.amazonaws.com/%s" % AWS_STORAGE_BUCKET_NAME
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+
+# Media file storage
+
+MEDIAFILES_LOCATION = 'media'
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_DOMAIN, MEDIAFILES_LOCATION)
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+
+
+
 
 # RabbitMQ settings
 BROKER_URL = "amqp://%s:%s@localhost:5672/%s" % (
