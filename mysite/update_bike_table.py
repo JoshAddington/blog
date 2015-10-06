@@ -37,21 +37,20 @@ def update_table(json_file):
 # compared to station data
 def check_stations(row):
     station, create_station = Station.objects.get_or_create(
-                    name=row['stationName'], defaults={'station_id': row['id'],
-                    'availableDocks': (row['availableDocks'] + row['availableBikes']),
-                    'latitude': row['latitude'],
-                    'longitude': row['longitude']})
+            name=row['stationName'], defaults={'station_id': row['id'],
+            'availableDocks': (row['availableDocks'] + row['availableBikes']),
+            'latitude': row['latitude'],
+            'longitude': row['longitude']})
     return station
 
 
 # take in a json file row
 # parse and add to Bike Model
 def add_bikes_row(row, station, update):
-                bike, create_bike = Bike.objects.get_or_create(
-                    station=station,
-                    update=update,
-                    number_of_bikes=row['availableBikes'])
-
+    bike, create_bike = Bike.objects.get_or_create(
+            station=station,
+            update=update,
+            number_of_bikes=row['availableBikes'])
 
 
 if __name__ == '__main__':

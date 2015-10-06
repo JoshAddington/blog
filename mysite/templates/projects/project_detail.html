@@ -5,7 +5,7 @@
         <img class="header-background" src="{% static 'img/headline/shiny-2002.jpg' %}">
 {% endblock %}
 
-{% block project %}
+{% block content %}
         <div class="project">
                 <div class="date">
                 {% if project.published_date %}
@@ -47,7 +47,7 @@
                         {{ project.code|safe }}
                 </div>
         </div>
-{% endblock project %}
+{% endblock content %}
 
 {% block extra_js %}
 {{project.js|safe}}
