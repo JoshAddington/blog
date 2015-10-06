@@ -55,10 +55,10 @@ def check_stations(row):
 # take in a json file row
 # parse and add to Bike Model
 def add_bikes_row(row, station, update):
-                bike, create_bike = Bike.objects.get_or_create(
-                    station=station,
-                    update=update,
-                    number_of_bikes=row['availableBikes'])
+    bike, create_bike = Bike.objects.get_or_create(
+        station=station,
+        update=update,
+        number_of_bikes=row['availableBikes'])
 
 
 if __name__ == '__main__':
