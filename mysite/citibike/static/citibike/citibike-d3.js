@@ -132,10 +132,10 @@ d3.json("/static/citibike/api.json", function(error, data){
       if (playInterval !== undefined){
           clearInterval(playInterval);
           playInterval = undefined;
-          $(this).html("play");
+          $(this).html("Play");
           return;
         }
-      $(this).html("pause");
+      $(this).html("Pause");
       playInterval = setInterval(function(){
         currentSlide++;
         if (currentSlide > timestamps.length){
