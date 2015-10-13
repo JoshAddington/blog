@@ -157,23 +157,6 @@ hr{
     height: 850px;
 }
 
-#mapbox{
-    width: 800px;
-    height: 900px;
-}
-
-#tooltip {
-  position: absolute;
-  height: auto;
-  padding: 10px;
-  background-color: white;
-  -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
-  -moz-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
-  pointer-events: none;
-  opacity: 0;
-}
-
 .post-relation, .project-relation{
     margin: 10px 0;
     font-style: italic;
