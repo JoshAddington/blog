@@ -1,7 +1,12 @@
-var map = new L.Map("mapbox", {center: [40.73394999, -73.96100056], zoom: 12})
+var map = new L.Map("mapbox", {zoomControl: false, center: [40.733, -73.969], zoom: 13})
     .addLayer(new L.TileLayer("http://{s}.tiles.mapbox.com/v4/joshaddington.l8aja3lb/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoiam9zaGFkZGluZ3RvbiIsImEiOiI3YkZxMFJnIn0.iVv6sgsySboP3BaH8KqGbA", {
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
 }));
+
+map.dragging.disable();
+map.touchZoom.disable();
+map.doubleClickZoom.disable();
+map.scrollWheelZoom.disable();
 
 var svg = d3.select(map.getPanes().overlayPane).append("svg"),
     g = svg.append("g").attr("class", "leaflet-zoom-hide");
