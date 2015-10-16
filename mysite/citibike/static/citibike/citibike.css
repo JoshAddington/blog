@@ -1,6 +1,8 @@
-/*svg {
+svg {
     position: relative;
-}*/
+    width: 800px;
+    height: 900px;
+}
 
 #mapbox{
     top: -85px;
