@@ -28,7 +28,7 @@ class UpdateTime(models.Model):
 
 
 class Bike(models.Model):
-        station = models.ForeignKey(Station, to_field='station_number', related_name='bikes')
+        station = models.ForeignKey(Station, related_name='bikes')
         number_of_bikes = models.IntegerField()
         update = models.ForeignKey(UpdateTime, related_name='bike_update')
         created_at = models.DateTimeField(auto_now_add=True)

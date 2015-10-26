@@ -2,7 +2,8 @@ from . import views
 from django.conf.urls import url, patterns
 
 urlpatterns = patterns('',
-    url(r'^boroughs/$', views.boroughs),
+    url(r'^mapbox$', views.mapbox),
+    url(r'^boroughs$', views.boroughs),
     url(r'^map/$', views.citibike_map),
     url(r'^stations/$', views.station_collection),
     url(r'^stations/(?P<pk>[0-9]+)/$', views.station_detail),

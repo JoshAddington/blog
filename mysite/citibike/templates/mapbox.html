@@ -1,0 +1,42 @@
+{% extends 'projects/project_detail.html' %}
+{% load staticfiles %}
+
+
+{% block projecttemplate %}
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.2/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.2/mapbox.css' rel='stylesheet' />
+<link rel="stylesheet" href="/static/citibike/citibike.css">
+
+<div id="mapbox" class="map-one"></div>
+<div id="info">
+    <hr class="info-hr">
+    <div id="slider-box">
+        <div id="slider"></div>
+    </div>
+    <hr class="info-hr">
+    <p id="current_time">Sunday, October 4th, 6:50 pm</p>
+    <hr class="info-hr">
+    <div class="radio-box">
+        <button type="button" name="play" id='play' class="mybutton left">Play</button>
+        <span class="radio-button">
+            <input type="radio" name="speed" value="slow" id="slow">
+            <label for="slow">Slow</label></span><span class="radio-button">
+            <input type="radio" name="speed" value="fast" id="fast" checked="true">
+            <label for="fast">Fast</label>
+        </span>
+    </div>
+    <div id="tooltip">
+        <p id="station-name"></p>
+        <hr class="tooltip-hr">
+        <p><span id="bikes"></span> available bikes</p>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="/static/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="/static/jquery-ui-1.11.4.custom/jquery-ui.min.css">
+<script src="/static/citibike/nyc_leaflet.js" charset="utf-8"></script>
+<script src="/static/citibike/citibike-d3.js" charset="utf-8"></script>
+
+{% endblock projecttemplate %}
