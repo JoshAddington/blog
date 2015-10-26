@@ -1,13 +1,6 @@
-var path = d3.geo.path();
 var currentSlide = 0;
 var w = 800, h = 900;
 var stations, availableBikes, timestamps;
-
-svg = d3.select("#mapbox")
-            .append("svg")
-            .attr("width", w)
-            .attr("height", h)
-            .style("z-index", 200);
 
 var projection = d3.geo.mercator().center([-73.999, 40.733])
                        .translate([w/2, h/2])
@@ -15,8 +8,6 @@ var projection = d3.geo.mercator().center([-73.999, 40.733])
 
 var path = d3.geo.path()
                  .projection(projection);
-
-var g = svg.append("g").style("z-index", 200);
 
 function addCommas(nStr){
   nStr += '';
@@ -146,8 +137,8 @@ d3.json("/static/citibike/api.json", function(error, data){
             .style("stroke", "white")
             .style("stroke-width", "2");
           d3.select("#tooltip")
-            .style("left", (d3.event.pageX) - 180 + "px")
-            .style("top", (d3.event.pageY) - 175 + "px");
+            .style("left", (d3.event.pageX) - 250 + "px")
+            .style("top", (d3.event.pageY) - 275 + "px");
           d3.select('#station-name')
             .text(d.name);
           d3.select('#bikes')

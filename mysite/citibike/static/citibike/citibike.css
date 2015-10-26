@@ -1,18 +1,9 @@
-svg {
-    position: relative;
-    width: 800px;
-    height: 900px;
-}
-
-#mapbox{
-    top: -85px;
-    width: 800px;
-    height: 900px;
-}
+.map-one { position:relative; top:0; width:800px; height: 900px; }
 
 #tooltip {
   position: absolute;
   height: auto;
+  width: 250px;
   padding: 10px;
   background-color: white;
   -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
@@ -22,32 +13,68 @@ svg {
   opacity: 0;
 }
 
+#tooltip p {
+    margin: 5px;
+}
+
+.tooltip-hr {
+    width: 150px;
+    margin: 0 0 5px 0;
+    padding: 0;
+}
+/*
+#bikes {
+    padding-left: 10px;
+}*/
+
 .mybutton#play {
     font-size: 16px;
     height: 35px;
     margin-top: -7px;
     min-width: 60px;
     max-width: 60px;
+    background: #30765f;
+    border-bottom: 2px solid #265E4C;
+    box-shadow: inset 0 -2px #265E4C;
 }
 
 #info {
     position: relative;
     z-index: 300;
-    top: 82px;
-    background-color: #c0cdd1;
+    top: -885px;
+    left: 15px;
+    background-color: #eea756;
     border: 1px solid #312f2a;
     font-family: 'Poiret One';
     font-weight: bold;
     max-width: 375px;
-    padding: 10px;
+    padding: 25px;
 }
-
 #slider-box {
     position: relative;
     z-index: 150;
-    background-color: #c0cdd1;
+    background-color: #eea756;
     padding: 15px;
-    margin: 20px;
+}
+
+#slider {
+    box-shadow: 0 3px 3px #888888;
+}
+
+.ui-slider-handle {
+    box-shadow: 0 3px 3px #888888;
+}
+
+.info-hr {
+    height: 1px;
+    border: 0;
+    width: 210px;
+    background: #222222;
+    margin: 0 auto;
+}
+
+#current_time {
+    margin: 10px 0 10px 50px;
 }
 
 .radio-button {
@@ -57,13 +84,10 @@ svg {
     padding-bottom: 10px;
 }
 
-.radio-button input {
-    position: relative;
-    z-index: 300;
-    margin: 5px;
-}
-
 .radio-box {
+    margin: 20px 15px 0 85px;
     position: relative;
+    left: -25px;
     z-index: 300;
+    width: 275px;
 }

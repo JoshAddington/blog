@@ -65,11 +65,3 @@ def project_delete(request, slug):
     project = get_object_or_404(Project, slug=slug)
     project.delete()
     return redirect('projects.views.project_list')
-
-
-def get_boroughs():
-    r = requests.get(
-        "http://bl.ocks.org/phil-pedruco/raw/6646844/830fab4f3a9cb28766c292c10fd99837bfcd1b80/nyc.json"
-    )
-    data = json.loads(r.text)
-    return data

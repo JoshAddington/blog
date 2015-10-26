@@ -53,7 +53,7 @@ hr{
     border-bottom: 1px solid;
     border-bottom-color: #ccc;
     border-bottom-color: rgba(0, 0, 0, 0.4);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .glass a{
