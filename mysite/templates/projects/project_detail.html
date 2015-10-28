@@ -44,6 +44,7 @@
                         {{ project.content|linebreaks }}
                 </div>
                 <div class="project-code">
+                    {{ project.code|safe }}
                     {% block projecttemplate %}
                     {% endblock projecttemplate %}
                 </div>
